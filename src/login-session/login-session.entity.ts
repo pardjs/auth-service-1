@@ -1,7 +1,7 @@
 import { EntityParent } from '@pardjs/common';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('login_session')
+@Entity('LoginSession')
 export class LoginSession extends EntityParent {
   @PrimaryGeneratedColumn()
   id: number;

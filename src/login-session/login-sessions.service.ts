@@ -8,18 +8,18 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { superMd5 } from '@pardjs/common';
 import { spanHours } from '@pardjs/common';
 import { Repository } from 'typeorm';
+import { JwtPayload } from '../auth/jwt-payload.interface';
 import {
   LOGIN_SESSION_LIFE_HOURS,
   LOGIN_SESSION_LIFE_SECONDS,
   PASSWORD_HASH_KEY,
 } from '../constants';
-import { UserErrors } from './errors';
-import { JwtPayload } from './jwt-payload.interface';
+import { UserErrors } from '../users/errors';
+import { User } from '../users/user.entity';
+import { UsersService } from '../users/users.service';
 import { LoginByIdDto } from './login-by-id.dto';
 import { LoginResponse } from './login-response.dto';
 import { LoginSession } from './login-session.entity';
-import { User } from './user.entity';
-import { UsersService } from './users.service';
 
 @Injectable()
 export class LoginSessionsService {

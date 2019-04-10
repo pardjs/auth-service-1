@@ -20,19 +20,16 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { AllowedRoles } from '@pardjs/common';
+import { MS_ONE_SECOND } from '@pardjs/common';
 import { logger } from '@pardjs/common';
 import { RolesGuard } from '@pardjs/common';
 import { Request, Response } from 'express';
-import { MS_ONE_SECOND } from './../constants';
-import { CreateUserDto } from './create-user.dto';
-import { LoginByIdDto } from './login-by-id.dto';
-import { LoginResponse } from './login-response.dto';
-import { LoginSessionsService } from './login-sessions.service';
-import { UpdateUserDto } from './update-user.dto';
-import { UserResponse } from './user-response.dto';
-import { UserRoles, UserRolesNameDict } from './user-roles';
-import { UserRolesDto } from './user-roles.dto';
+import { LoginByIdDto } from '../login-session/login-by-id.dto';
+import { LoginResponse } from '../login-session/login-response.dto';
+import { LoginSessionsService } from '../login-session/login-sessions.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UserResponse } from './dto/user-response.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
 
@@ -76,7 +73,6 @@ export class UsersController {
   @ApiResponse({ status: HttpStatus.CREATED, type: UserResponse })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @AllowedRoles('ADMIN')
   create(@Body() body: CreateUserDto) {
     return this.usersService.create(body);
   }
@@ -86,7 +82,6 @@ export class UsersController {
   @ApiResponse({ status: HttpStatus.OK, type: UserResponse, isArray: true })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @AllowedRoles(UserRoles.ADMIN)
   async find(
     @Query('limit') limit: number = 10,
     @Query('offset') offset: number = 0,
@@ -111,7 +106,6 @@ export class UsersController {
   @Put('/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @AllowedRoles(UserRoles.ADMIN)
   updateById(@Param('id') id: number, @Body() body: UpdateUserDto) {
     return this.usersService.updateById(id, body);
   }
@@ -119,23 +113,7 @@ export class UsersController {
   @Delete(':id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @AllowedRoles(UserRoles.ADMIN)
   async deleteUser(@Param('id') id: number) {
     return this.usersService.delete(id);
-  }
-
-  @Get('/roles')
-  @ApiResponse({
-    status: HttpStatus.OK,
-    type: UserRolesDto,
-  })
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @AllowedRoles(UserRoles.ADMIN)
-  getRoles() {
-    const data = Object.keys(UserRolesNameDict).map(key => {
-      return { type: key, name: UserRolesNameDict[key] };
-    });
-    return { data };
   }
 }

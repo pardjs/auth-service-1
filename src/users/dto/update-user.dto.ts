@@ -1,6 +1,5 @@
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString, MinLength } from 'class-validator';
-import { UserRoles } from './user-roles';
 
 export class UpdateUserDto {
   @ApiModelProperty({
@@ -23,12 +22,5 @@ export class UpdateUserDto {
   })
   @MinLength(2)
   @IsString()
-  showName: string;
-
-  @ApiModelProperty({
-    enum: UserRoles,
-    example: UserRoles.ADMIN,
-  })
-  @IsEnum(UserRoles)
-  role: string;
+  displayName: string;
 }

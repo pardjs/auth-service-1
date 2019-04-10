@@ -283,7 +283,7 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/yargs" "^12.0.9"
 
-"@nestjs/common@^6.0.4", "@nestjs/common@^6.0.5":
+"@nestjs/common@^6.0.5":
   version "6.0.5"
   resolved "http://registry.npm.taobao.org/@nestjs/common/download/@nestjs/common-6.0.5.tgz#2e33ced50e629a5c32df3b9a09efde61d4b5a2df"
   integrity sha1-LjPO1Q5imlwy3zuaCe/eYdS1ot8=
@@ -292,10 +292,31 @@
     cli-color "1.4.0"
     uuid "3.3.2"
 
-"@nestjs/core@^6.0.4", "@nestjs/core@^6.0.5":
+"@nestjs/common@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.1.0.tgz#5f70c88db621149ace3abcf428bccec78091e29e"
+  integrity sha512-T/AJOGzTGcMi88ZBqty1NYVYiRCnkFKXKB8DOfQ2FmfE5kvqJ5T/MqKemcpy+MumtZo4Eux9nAL3j2A7EX61Ng==
+  dependencies:
+    axios "0.18.0"
+    cli-color "1.4.0"
+    uuid "3.3.2"
+
+"@nestjs/core@^6.0.5":
   version "6.0.5"
   resolved "http://registry.npm.taobao.org/@nestjs/core/download/@nestjs/core-6.0.5.tgz#f17b91c7c0fcee178791040279be06ffc3785faf"
   integrity sha1-8XuRx8D87heHkQQCeb4G/8N4X68=
+  dependencies:
+    "@nuxtjs/opencollective" "0.2.1"
+    fast-safe-stringify "2.0.6"
+    iterare "1.1.2"
+    object-hash "1.3.1"
+    optional "0.1.4"
+    uuid "3.3.2"
+
+"@nestjs/core@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.1.0.tgz#87b590bfb21722780ff6088eda5da37797889344"
+  integrity sha512-oIkntxF6a+fLTn371lB2oMKQ9ZqovvlkRT6WSSQ7EaJ8ao2jfrXozIyVMQPJ1xavnUjzqCNMziCDJhwIymZXeg==
   dependencies:
     "@nuxtjs/opencollective" "0.2.1"
     fast-safe-stringify "2.0.6"
@@ -312,10 +333,10 @@
     "@types/jsonwebtoken" "7.2.8"
     jsonwebtoken "8.4.0"
 
-"@nestjs/microservices@^6.0.4":
-  version "6.0.5"
-  resolved "http://registry.npm.taobao.org/@nestjs/microservices/download/@nestjs/microservices-6.0.5.tgz#c2a5920df44804818b68620b77d9509e4d7f4e03"
-  integrity sha1-wqWSDfRIBIGLaGILd9lQnk1/TgM=
+"@nestjs/microservices@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/microservices/-/microservices-6.1.0.tgz#ba3518035ecf207e7baeec3c6ecc1e2868391db3"
+  integrity sha512-4oM/YVkw5Vy7QA3M8Wg1vHnYNYnuV8CwvQyjjZkYCgPoXNFv99vtQa17epX0MddQqDVbqr3i4whIR6f/1n3Wlw==
   dependencies:
     iterare "1.1.2"
     json-socket "0.3.0"
@@ -326,10 +347,10 @@
   resolved "http://registry.npm.taobao.org/@nestjs/passport/download/@nestjs/passport-6.0.0.tgz#b92fdf90e055eece02c0378fce98e6f60a864c54"
   integrity sha1-uS/fkOBV7s4CwDePzpjm9gqGTFQ=
 
-"@nestjs/platform-express@^6.0.4":
-  version "6.0.5"
-  resolved "http://registry.npm.taobao.org/@nestjs/platform-express/download/@nestjs/platform-express-6.0.5.tgz#148811f480583ecadc2958fd1a794e71fc55a5df"
-  integrity sha1-FIgR9IBYPsrcKVj9GnlOcfxVpd8=
+"@nestjs/platform-express@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-6.1.0.tgz#4058d5d62433fa0eef91a3383c0ce54e0c9d4da7"
+  integrity sha512-uWXsj/2g+TEakZ21zSeQMunGVLEoWriuy9F8DIjUKoQV9Ha7zp3JeQg83o3AK5cKmdSr7l+gEOOytQ8dq6WIVA==
   dependencies:
     body-parser "1.18.3"
     cors "2.8.5"
@@ -338,16 +359,16 @@
 
 "@nestjs/swagger@^3.0.2":
   version "3.0.2"
-  resolved "http://registry.npm.taobao.org/@nestjs/swagger/download/@nestjs/swagger-3.0.2.tgz#b15b3354050757f648e7ebc6ae8d15a929220804"
-  integrity sha1-sVszVAUHV/ZI5+vGro0VqSkiCAQ=
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-3.0.2.tgz#b15b3354050757f648e7ebc6ae8d15a929220804"
+  integrity sha512-7cmOqa3MoK3ZXThECa3RCe5s5Bppm66DqDRz+nfTp5k2oGoFHX9t45jNU8P5aANCIEi1nA3TYwvEAGgZdV8WbA==
   dependencies:
     lodash "4.17.11"
     path-to-regexp "3.0.0"
 
-"@nestjs/testing@6.0.5":
-  version "6.0.5"
-  resolved "http://registry.npm.taobao.org/@nestjs/testing/download/@nestjs/testing-6.0.5.tgz#c5b8072181b6d23318818f463aca5b2ed0626232"
-  integrity sha1-xbgHIYG20jMYgY9GOspbLtBiYjI=
+"@nestjs/testing@6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.1.0.tgz#e51380947d0031f70bfc79a998a7fc4c2ce01788"
+  integrity sha512-vmOX5BeWwWW6occ7kBtbcXJNkdxbvWqlJFPsDGaqEkb0WpG5Zc5lwuhNr2fOM/8vX1uoM7xXXRhrqlkBVYLpfw==
   dependencies:
     optional "0.1.4"
 
@@ -358,10 +379,10 @@
   dependencies:
     uuid "3.3.2"
 
-"@nestjs/websockets@^6.0.4":
-  version "6.0.5"
-  resolved "http://registry.npm.taobao.org/@nestjs/websockets/download/@nestjs/websockets-6.0.5.tgz#09ae116e2d3b25c6eb8c75b0d8a9ad5759015848"
-  integrity sha1-Ca4Rbi07JcbrjHWw2KmtV1kBWEg=
+"@nestjs/websockets@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-6.1.0.tgz#b8ae0888293d62db0b307ee5597fcb78c9f5f658"
+  integrity sha512-9dH7+enb3fOyXtHiTYUpn8lbT/9ZyFhIISB6fTpDp1PFAE8TLYOENGUISrtLTawf2GPRZCreaz9T8Gnkr9WOhw==
   dependencies:
     iterare "1.1.2"
 
@@ -374,10 +395,10 @@
     consola "^2.3.0"
     node-fetch "^2.3.0"
 
-"@pardjs/common@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@pardjs/common/-/common-1.0.1.tgz#ca3773695307d78579d9b3547a91c86b22084cfc"
-  integrity sha512-U85GG0bKs1EGw5OS5xsLj0+396k747cs/hbCSqYk4AkNF5fFm+DrILpJofmvbLlCcZ7e2EdqzXgTgPP9/ps/qQ==
+"@pardjs/common@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@pardjs/common/-/common-1.0.2.tgz#78ba39e798582e88d35356c8f27111ff133a3816"
+  integrity sha512-wQ3ne0dETnf/adauT7red80zPihjBe/PYWo4h0Og9G0q5Gf7dYZJZ1ueEoYGkMmdtzmP6i+3lQYnlVo62gr66Q==
   dependencies:
     "@nestjs/common" "^6.0.5"
     "@nestjs/core" "^6.0.5"
@@ -966,6 +987,11 @@ buffer-from@1.x, buffer-from@^1.0.0, buffer-from@^1.1.0:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/buffer-from/download/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha1-MnE7wCj3XAL9txDXx7zsHyxgcO8=
+
+buffer-writer@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/buffer-writer/-/buffer-writer-2.0.0.tgz#ce7eb81a38f7829db09c873f2fbb792c0c98ec04"
+  integrity sha512-a7ZpuTZU1TRtnwyCNW3I5dc0wWNC3VR9S++Ewyk2HHZdrO3CQJqSpd+95Us590V6AL7JqUAH2IwZ/398PmNFgw==
 
 buffer@^5.1.0:
   version "5.2.1"
@@ -3225,6 +3251,22 @@ jsonwebtoken@8.4.0:
     lodash.once "^4.0.0"
     ms "^2.1.1"
 
+jsonwebtoken@^8.2.0:
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.5.1.tgz#00e71e0b8df54c2121a1f26137df2280673bcc0d"
+  integrity sha512-XjwVfRS6jTMsqYs0EsuJ4LGxXV14zQybNd4L2r0UvbVnSF9Af8x7p5MzbJ90Ioz/9TI41/hTCvznF/loiSzn8w==
+  dependencies:
+    jws "^3.2.2"
+    lodash.includes "^4.3.0"
+    lodash.isboolean "^3.0.3"
+    lodash.isinteger "^4.0.4"
+    lodash.isnumber "^3.0.3"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
+    lodash.once "^4.0.0"
+    ms "^2.1.1"
+    semver "^5.6.0"
+
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "http://registry.npm.taobao.org/jsprim/download/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -3244,7 +3286,7 @@ jwa@^1.4.1:
     ecdsa-sig-formatter "1.0.11"
     safe-buffer "^5.0.1"
 
-jws@^3.1.5:
+jws@^3.1.5, jws@^3.2.2:
   version "3.2.2"
   resolved "http://registry.npm.taobao.org/jws/download/jws-3.2.2.tgz#001099f3639468c9414000e99995fa52fb478304"
   integrity sha1-ABCZ82OUaMlBQADpmZX6UvtHgwQ=
@@ -4083,6 +4125,11 @@ package-json@^4.0.0:
     registry-url "^3.0.3"
     semver "^5.1.0"
 
+packet-reader@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/packet-reader/-/packet-reader-1.0.0.tgz#9238e5480dedabacfe1fe3f2771063f164157d74"
+  integrity sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==
+
 parent-require@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/parent-require/download/parent-require-1.0.0.tgz#746a167638083a860b0eef6732cb27ed46c32977"
@@ -4110,6 +4157,27 @@ pascalcase@^0.1.1:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/pascalcase/download/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
+
+passport-jwt@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/passport-jwt/-/passport-jwt-4.0.0.tgz#7f0be7ba942e28b9f5d22c2ebbb8ce96ef7cf065"
+  integrity sha512-BwC0n2GP/1hMVjR4QpnvqA61TxenUMlmfNjYNgK0ZAs0HK4SOQkHcSv4L328blNTLtHq7DbmvyNJiH+bn6C5Mg==
+  dependencies:
+    jsonwebtoken "^8.2.0"
+    passport-strategy "^1.0.0"
+
+passport-strategy@1.x.x, passport-strategy@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/passport-strategy/-/passport-strategy-1.0.0.tgz#b5539aa8fc225a3d1ad179476ddf236b440f52e4"
+  integrity sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=
+
+passport@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/passport/-/passport-0.4.0.tgz#c5095691347bd5ad3b5e180238c3914d16f05811"
+  integrity sha1-xQlWkTR71a07XhgCOMORTRbwWBE=
+  dependencies:
+    passport-strategy "1.x.x"
+    pause "0.0.1"
 
 path-dirname@^1.0.0:
   version "1.0.2"
@@ -4158,10 +4226,61 @@ path-type@^3.0.0:
   dependencies:
     pify "^3.0.0"
 
+pause@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
+  integrity sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/performance-now/download/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+pg-connection-string@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-0.1.3.tgz#da1847b20940e42ee1492beaf65d49d91b245df7"
+  integrity sha1-2hhHsglA5C7hSSvq9l1J2RskXfc=
+
+pg-int8@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/pg-int8/-/pg-int8-1.0.1.tgz#943bd463bf5b71b4170115f80f8efc9a0c0eb78c"
+  integrity sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==
+
+pg-pool@^2.0.4:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.6.tgz#7b561a482feb0a0e599b58b5137fd2db3ad8111c"
+  integrity sha512-hod2zYQxM8Gt482q+qONGTYcg/qVcV32VHVPtktbBJs0us3Dj7xibISw0BAAXVMCzt8A/jhfJvpZaxUlqtqs0g==
+
+pg-types@~2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/pg-types/-/pg-types-2.0.1.tgz#b8585a37f2a9c7b386747e44574799549e5f4933"
+  integrity sha512-b7y6QM1VF5nOeX9ukMQ0h8a9z89mojrBHXfJeSug4mhL0YpxNBm83ot2TROyoAmX/ZOX3UbwVO4EbH7i1ZZNiw==
+  dependencies:
+    pg-int8 "1.0.1"
+    postgres-array "~2.0.0"
+    postgres-bytea "~1.0.0"
+    postgres-date "~1.0.4"
+    postgres-interval "^1.1.0"
+
+pg@^7.9.0:
+  version "7.9.0"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-7.9.0.tgz#04f0024d810544463f47dbb5aada2486aa7dcc36"
+  integrity sha512-GkzteBFpsIoIBCSuomqik3IGvhqAtTr32jclR24RmUg170Jrn6ypwR97YalFHrsE1iaW8T0aAH13dmij8QUQ0g==
+  dependencies:
+    buffer-writer "2.0.0"
+    packet-reader "1.0.0"
+    pg-connection-string "0.1.3"
+    pg-pool "^2.0.4"
+    pg-types "~2.0.0"
+    pgpass "1.x"
+    semver "4.3.2"
+
+pgpass@1.x:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/pgpass/-/pgpass-1.0.2.tgz#2a7bb41b6065b67907e91da1b07c1847c877b306"
+  integrity sha1-Knu0G2BltnkH6R2hsHwYR8h3swY=
+  dependencies:
+    split "^1.0.0"
 
 pify@^3.0.0:
   version "3.0.0"
@@ -4191,6 +4310,28 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/posix-character-classes/download/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
+
+postgres-array@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/postgres-array/-/postgres-array-2.0.0.tgz#48f8fce054fbc69671999329b8834b772652d82e"
+  integrity sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==
+
+postgres-bytea@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/postgres-bytea/-/postgres-bytea-1.0.0.tgz#027b533c0aa890e26d172d47cf9ccecc521acd35"
+  integrity sha1-AntTPAqokOJtFy1Hz5zOzFIazTU=
+
+postgres-date@~1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/postgres-date/-/postgres-date-1.0.4.tgz#1c2728d62ef1bff49abdd35c1f86d4bdf118a728"
+  integrity sha512-bESRvKVuTrjoBluEcpv2346+6kgB7UlnqWZsnbnCccTNq/pqfj1j6oBaN5+b/NrDXepYUT/HKadqv3iS9lJuVA==
+
+postgres-interval@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/postgres-interval/-/postgres-interval-1.2.0.tgz#b460c82cb1587507788819a06aa0fffdb3544695"
+  integrity sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==
+  dependencies:
+    xtend "^4.0.0"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -4583,6 +4724,11 @@ semver-diff@^2.0.0:
   resolved "http://registry.npm.taobao.org/semver/download/semver-5.7.0.tgz#790a7cf6fea5459bac96110b29b60412dc8ff96b"
   integrity sha1-eQp89v6lRZuslhELKbYEEtyP+Ws=
 
+semver@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.2.tgz#c7a07158a80bedd052355b770d82d6640f803be7"
+  integrity sha1-x6BxWKgL7dBSNVt3DYLWZA+AO+c=
+
 send@0.16.2:
   version "0.16.2"
   resolved "http://registry.npm.taobao.org/send/download/send-0.16.2.tgz#6ecca1e0f8c156d141597559848df64730a6bbc1"
@@ -4777,6 +4923,13 @@ split-string@^3.0.1, split-string@^3.0.2:
   integrity sha1-fLCd2jqGWFcFxks5pkZgOGguj+I=
   dependencies:
     extend-shallow "^3.0.0"
+
+split@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/split/-/split-1.0.1.tgz#605bd9be303aa59fb35f9229fbea0ddec9ea07d9"
+  integrity sha512-mTyOoPbrivtXnwnIxZRFYRrPNtEFKlpB2fvjSnCQUiAA6qAZzqwna5envK4uk6OIeP17CsdF3rSBGYVBsU0Tkg==
+  dependencies:
+    through "2"
 
 sprintf-js@~1.0.2:
   version "1.0.3"
@@ -4975,6 +5128,18 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
+swagger-ui-dist@^3.18.1:
+  version "3.22.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.22.0.tgz#9f2417d774f21fac260b1497ead0650dc3e92861"
+  integrity sha512-ZFcQoi4XT2t/NGKByVwmb4iERLtGmQQEFqHNC1PmdauWVZ2y80akkzctghgAftTlc8xpUp+I62nm4Km2q82ajQ==
+
+swagger-ui-express@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-4.0.2.tgz#8fae60038b990258dc14e07ea3427e93fb621622"
+  integrity sha512-XZtXI2+SKT3fgvJSGg4P7Dtmkzr50uoSb09IxbUWmjL538TIGRMZtfdEkjZEEq44xgGNAxMryzBEUdUnkXr8dA==
+  dependencies:
+    swagger-ui-dist "^3.18.1"
+
 symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "http://registry.npm.taobao.org/symbol-tree/download/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
@@ -5033,6 +5198,11 @@ throat@^4.0.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/throat/download/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
+
+through@2:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+  integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
 timed-out@^4.0.0:
   version "4.0.1"

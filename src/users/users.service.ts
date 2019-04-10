@@ -2,13 +2,12 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { superMd5 } from '@pardjs/common';
 import { logger } from '@pardjs/common';
-import { FindConditions, FindManyOptions, Repository } from 'typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { PASSWORD_HASH_KEY, SUPER_ADMIN_INITIAL_PASSWORD } from '../constants';
-import { CreateUserDto } from './create-user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UserResponse } from './dto/user-response.dto';
 import { UserErrors } from './errors';
-import { UpdateUserDto } from './update-user.dto';
-import { UserResponse } from './user-response.dto';
-import { UserRoles } from './user-roles';
 import { User } from './user.entity';
 
 const childLogger = logger.child({ service: 'users' });
@@ -25,8 +24,7 @@ export class UsersService {
         await this.create({
           employeeId: '1001',
           password: SUPER_ADMIN_INITIAL_PASSWORD,
-          showName: '超级管理员',
-          role: 'ADMIN',
+          displayName: '超级管理员',
         });
       }
     })();
@@ -36,8 +34,7 @@ export class UsersService {
     const newUser = this.usersRepository.create({
       employeeId: data.employeeId,
       password: superMd5(data.password, PASSWORD_HASH_KEY),
-      role: data.role,
-      showName: data.showName,
+      displayName: data.displayName,
     });
     const savedUser = await this.usersRepository.save(newUser);
     return this.toResponse(savedUser);
@@ -67,9 +64,8 @@ export class UsersService {
   toResponse(user: User) {
     return {
       employeeId: user.employeeId,
-      role: user.role,
       id: user.id,
-      showName: user.showName,
+      displayName: user.displayName,
       createdAt: user.createdAt.toISOString(),
       updatedAt: user.updatedAt.toISOString(),
     };
@@ -85,8 +81,7 @@ export class UsersService {
       throw new BadRequestException(UserErrors.USER_NOT_FOUND);
     }
     found.employeeId = data.employeeId;
-    found.role = data.role;
-    found.showName = data.showName;
+    found.displayName = data.displayName;
     if (data.password) {
       found.password = superMd5(data.password, PASSWORD_HASH_KEY);
     }

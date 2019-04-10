@@ -3,36 +3,45 @@ import {
   Column,
   Entity,
   Index,
-  OneToMany,
+  JoinTable,
+  ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Shipment } from '../shipments/shipment.entity';
-import { UserRoles } from './user-roles';
+import { Role } from '../roles/role.entity';
 
-@Entity('user')
+@Entity('User')
 export class User extends EntityParent {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
-  @Index({ unique: true })
-  @Column({ name: 'employee_id' })
-  employeeId: string;
+  @Column()
+  name: string;
+
+  @Index('idx-user-username-unique', { unique: true, sparse: true })
+  @Column()
+  username: string;
+
+  @Index('idx-user-email-unique', { unique: true, sparse: true })
+  @Column()
+  email: string;
+
+  @Index('idx-user-mobile-unique', { unique: true, sparse: true })
+  @Column()
+  mobile: string;
+
+  @Column({ type: 'boolean', default: false })
+  isEmailVerified: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  isMobileVerified: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  isDisabled: boolean;
 
   @Column({ name: 'password', nullable: true })
   password: string;
 
-  @Column({ name: 'show_name' })
-  showName: string;
-
-  // Multiple roles will be separated by comma.
-  @Column({
-    name: 'roles',
-    type: 'enum',
-    enum: UserRoles,
-    default: UserRoles.SHIPMENT_MANAGER,
-  })
-  role: string;
-
-  @OneToMany(type => Shipment, shipment => shipment.createdByUser)
-  shipments: Shipment[];
+  @ManyToMany(type => Role, role => role.users, { cascade: false })
+  @JoinTable({ name: 'User_Role_Link' })
+  roles: Role[];
 }

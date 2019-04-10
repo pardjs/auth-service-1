@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+
+  pardjs-users-service-db:
+    container_name: pardjs-users-service-db
+    image: postgres:11-alpine
+    restart: always
+    ports:
+      - 127.0.0.1:5432:5432
+    volumes: 
+      - ./db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: pardjs
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: pardjs-users-service
+    networks: 
+      - pardjs-users-service
+
+  pardjs-users-service-db-adminer:
+    container_name: pardjs-users-service-db-adminer
+    image: adminer:4
+    restart: always
+    links: 
+      - pardjs-users-service-db:db
+    ports:
+      - 127.0.0.1:8080:8080
+    networks: 
+      - pardjs-users-service
+networks: 
+  pardjs-users-service:
