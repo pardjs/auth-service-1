@@ -1,7 +1,67 @@
 {
-  "name": "root",
-  "private": true,
+  "name": "@pardjs/users-service-server",
+  "version": "1.0.0",
+  "description": "Nest TypeScript starter repository",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "nodemon",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "prestart:prod": "rimraf dist && npm run build",
+    "start:prod": "node dist/main.js",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.0.4",
+    "@nestjs/core": "^6.0.4",
+    "@nestjs/jwt": "^6.0.0",
+    "@nestjs/passport": "^6.0.0",
+    "@nestjs/microservices": "^6.0.4",
+    "@nestjs/platform-express": "^6.0.4",
+    "@nestjs/typeorm": "^6.0.0",
+    "@nestjs/websockets": "^6.0.4",
+    "@pardjs/common": "1.0.1",
+    "cookie-parser": "^1.4.4",
+    "reflect-metadata": "0.1.13",
+    "rimraf": "2.6.3",
+    "rxjs": "6.4.0"
+  },
   "devDependencies": {
-    "lerna": "^3.13.1"
+    "@nestjs/testing": "6.0.5",
+    "@types/express": "4.16.1",
+    "@types/jest": "24.0.11",
+    "@types/node": "11.13.0",
+    "@types/supertest": "2.0.7",
+    "jest": "24.7.1",
+    "nodemon": "1.18.10",
+    "prettier": "1.16.4",
+    "supertest": "4.0.2",
+    "ts-jest": "24.0.2",
+    "ts-node": "8.0.3",
+    "tsconfig-paths": "3.8.0",
+    "tslint": "5.15.0",
+    "typescript": "3.4.2",
+    "yarn": "^1.15.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }
