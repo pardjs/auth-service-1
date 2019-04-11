@@ -5,10 +5,10 @@ export class UserResponse {
   id: number;
 
   @ApiModelProperty()
-  employeeId: string;
+  username: string;
 
   @ApiModelProperty()
-  displayName: string;
+  name: string;
 
   @ApiModelProperty()
   createdAt: string;

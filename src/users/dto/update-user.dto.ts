@@ -3,11 +3,10 @@ import { IsEnum, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class UpdateUserDto {
   @ApiModelProperty({
-    example: '1001',
+    example: 'goodbai',
   })
   @IsString()
-  @MinLength(4) // TODO: the real pattern of employeeId
-  employeeId: string;
+  username: string;
 
   @ApiModelPropertyOptional({
     example: 'P@ssW0rd',
@@ -22,5 +21,5 @@ export class UpdateUserDto {
   })
   @MinLength(2)
   @IsString()
-  displayName: string;
+  name: string;
 }

@@ -3,7 +3,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { superMd5 } from '@pardjs/common';
 import { logger } from '@pardjs/common';
 import { FindManyOptions, Repository } from 'typeorm';
-import { PASSWORD_HASH_KEY, SUPER_ADMIN_INITIAL_PASSWORD } from '../constants';
+import {
+  IP_WHITE_LIST_USER_NAME,
+  PASSWORD_HASH_KEY,
+  SUPER_ADMIN_INITIAL_PASSWORD,
+} from '../constants';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserResponse } from './dto/user-response.dto';
@@ -21,10 +25,18 @@ export class UsersService {
     (async () => {
       const userCount = await this.count();
       if (userCount === 0) {
+        // Can access any auth point
         await this.create({
-          employeeId: '1001',
+          username: 'admin',
           password: SUPER_ADMIN_INITIAL_PASSWORD,
-          displayName: '超级管理员',
+          name: '超级管理员',
+        });
+        // Can access any point by default, but can be configured.
+        // TODO: make white list user can be configured.
+        await this.create({
+          username: IP_WHITE_LIST_USER_NAME,
+          password: 'n/a',
+          name: IP_WHITE_LIST_USER_NAME,
         });
       }
     })();
@@ -32,9 +44,9 @@ export class UsersService {
 
   async create(data: CreateUserDto): Promise<UserResponse> {
     const newUser = this.usersRepository.create({
-      employeeId: data.employeeId,
+      username: data.username,
       password: superMd5(data.password, PASSWORD_HASH_KEY),
-      displayName: data.displayName,
+      name: data.name,
     });
     const savedUser = await this.usersRepository.save(newUser);
     return this.toResponse(savedUser);
@@ -63,9 +75,9 @@ export class UsersService {
 
   toResponse(user: User) {
     return {
-      employeeId: user.employeeId,
+      username: user.username,
       id: user.id,
-      displayName: user.displayName,
+      name: user.name,
       createdAt: user.createdAt.toISOString(),
       updatedAt: user.updatedAt.toISOString(),
     };
@@ -80,8 +92,8 @@ export class UsersService {
     if (!found) {
       throw new BadRequestException(UserErrors.USER_NOT_FOUND);
     }
-    found.employeeId = data.employeeId;
-    found.displayName = data.displayName;
+    found.username = data.username;
+    found.name = data.name;
     if (data.password) {
       found.password = superMd5(data.password, PASSWORD_HASH_KEY);
     }
@@ -89,7 +101,7 @@ export class UsersService {
     return this.toResponse(saved);
   }
 
-  findByEmployeeId(employeeId: string) {
-    return this.usersRepository.findOne({ where: { employeeId } });
+  findByUsername(username: string) {
+    return this.usersRepository.findOne({ where: { username } });
   }
 }

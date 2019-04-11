@@ -18,15 +18,15 @@ export class User extends EntityParent {
   name: string;
 
   @Index('idx-user-username-unique', { unique: true, sparse: true })
-  @Column()
+  @Column({ nullable: true })
   username: string;
 
   @Index('idx-user-email-unique', { unique: true, sparse: true })
-  @Column()
+  @Column({ nullable: true })
   email: string;
 
   @Index('idx-user-mobile-unique', { unique: true, sparse: true })
-  @Column()
+  @Column({ nullable: true })
   mobile: string;
 
   @Column({ type: 'boolean', default: false })

@@ -5,11 +5,12 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { superMd5 } from '@pardjs/common';
+import { superMd5, logger } from '@pardjs/common';
 import { spanHours } from '@pardjs/common';
 import { Repository } from 'typeorm';
 import { JwtPayload } from '../auth/jwt-payload.interface';
 import {
+  IP_WHITE_LIST_USER_ID,
   LOGIN_SESSION_LIFE_HOURS,
   LOGIN_SESSION_LIFE_SECONDS,
   PASSWORD_HASH_KEY,
@@ -17,7 +18,7 @@ import {
 import { UserErrors } from '../users/errors';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
-import { LoginByIdDto } from './login-by-id.dto';
+import { LoginByUsernameDto } from './login-by-username.dto';
 import { LoginResponse } from './login-response.dto';
 import { LoginSession } from './login-session.entity';
 
@@ -60,15 +61,27 @@ export class LoginSessionsService {
     return this.usersService.findById(userId);
   }
 
-  async loginById(data: LoginByIdDto): Promise<LoginResponse> {
+  async loginByUsername(data: LoginByUsernameDto): Promise<LoginResponse> {
     const user = await this.usersService.findOne({
-      employeeId: data.employeeId,
+      username: data.username,
       password: superMd5(data.password, PASSWORD_HASH_KEY),
     });
     if (!user) {
       throw new BadRequestException(UserErrors.INVALID_LOGIN_ID_OR_PASSWORD);
     }
     return await this.generateLoginResponse(user);
+  }
+
+  async loginByIp(): Promise<LoginResponse> {
+    const user = await this.usersService.findOne({
+      id: IP_WHITE_LIST_USER_ID,
+    });
+    if (!user) {
+      throw new BadRequestException(UserErrors.INVALID_LOGIN_ID_OR_PASSWORD);
+    }
+    const res = await this.generateLoginResponse(user);
+    logger.info('loginByIp', res);
+    return res;
   }
 
   private async generateLoginResponse(user: User) {
