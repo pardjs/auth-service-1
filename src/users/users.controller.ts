@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -12,7 +13,6 @@ import {
   Req,
   Res,
   UseGuards,
-  NotFoundException,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
@@ -25,6 +25,7 @@ import { MS_ONE_SECOND } from '@pardjs/common';
 import { logger } from '@pardjs/common';
 import { RolesGuard } from '@pardjs/common';
 import { Request, Response } from 'express';
+import { IP_WHITE_LIST } from 'src/constants';
 import { LoginByUsernameDto } from '../login-session';
 import { LoginResponse } from '../login-session/login-response.dto';
 import { LoginSessionsService } from '../login-session/login-sessions.service';
@@ -33,7 +34,6 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UserResponse } from './dto/user-response.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
-import { IP_WHITE_LIST } from 'src/constants';
 
 @Controller('/users')
 @ApiUseTags('User')

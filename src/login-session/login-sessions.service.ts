@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { superMd5, logger } from '@pardjs/common';
+import { logger, superMd5 } from '@pardjs/common';
 import { spanHours } from '@pardjs/common';
 import { Repository } from 'typeorm';
 import { JwtPayload } from '../auth/jwt-payload.interface';
