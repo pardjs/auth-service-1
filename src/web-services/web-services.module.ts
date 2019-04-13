@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 
-import { AuthPointsModule } from '../auth-points/auth-points.module';
-import { AuthModule } from '../auth/auth.module';
-import { RolesModule } from '../roles/roles.module';
+import { AuthModule } from '../auth';
+import { AuthPointsModule } from '../auth-points';
+import { RolesModule } from '../roles';
+import { LoginSessionsController } from './login-sessions.controller';
 import { UsersController } from './users.controller';
 
 @Module({
@@ -14,6 +15,6 @@ import { UsersController } from './users.controller';
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   providers: [],
-  controllers: [UsersController],
+  controllers: [UsersController, LoginSessionsController],
 })
 export class WebServicesModule {}

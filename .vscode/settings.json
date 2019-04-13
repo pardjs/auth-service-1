@@ -24,5 +24,6 @@
     "websockets"
   ],
   "git.ignoreLimitWarning": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "tslint.ignoreDefinitionFiles": true
 }

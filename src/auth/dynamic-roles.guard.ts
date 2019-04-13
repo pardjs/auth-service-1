@@ -1,7 +1,7 @@
-import { AuthPointsService } from './../auth-points/auth-points.service';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { logger } from '@pardjs/common';
-import { AuthPointNameKey } from '../../pkg-common';
+import { AuthPointNameKey } from '@pardjs/users-service-common';
+import { AuthPointsService } from '../auth-points/auth-points.service';
 
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../constants';
 import { User } from '../users/user.entity';

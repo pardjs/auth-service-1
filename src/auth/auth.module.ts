@@ -1,7 +1,7 @@
-import { LoginSessionsModule } from './../login-session/login-sessions.module';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { JWT_SECRET, LOGIN_SESSION_LIFE_SECONDS } from './../constants';
+import { LoginSessionsModule } from './../login-session/login-sessions.module';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 
