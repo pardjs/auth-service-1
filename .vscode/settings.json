@@ -1,18 +1,24 @@
 {
   "cSpell.words": [
+    "Bain",
     "Guodong",
     "Injectable",
     "Typedoc's",
+    "buefy",
     "codecov",
     "execpath",
+    "gitignore",
     "goodbai",
     "hotmail",
     "lcov",
     "lerna",
     "microservices",
     "nestjs",
+    "nuxt",
+    "nuxtjs",
     "pardjs",
     "postgres",
+    "precommit",
     "preinstall",
     "prestart",
     "repo",
@@ -24,6 +30,6 @@
     "websockets"
   ],
   "git.ignoreLimitWarning": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "tslint.ignoreDefinitionFiles": true
 }

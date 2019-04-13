@@ -2,15 +2,13 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { superMd5 } from '@pardjs/common';
 import { logger } from '@pardjs/common';
+import {CreateUserDto, RoleResponseDto, UpdateUserDto, UserResponse} from '@pardjs/users-service-common';
 import { FindManyOptions, Repository } from 'typeorm';
 import {
   IP_WHITE_LIST_USER_NAME,
   PASSWORD_HASH_KEY,
   SUPER_ADMIN_INITIAL_PASSWORD,
 } from '../constants';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { UserResponse } from './dto/user-response.dto';
 import { UserErrors } from './errors';
 import { User } from './user.entity';
 
@@ -76,6 +74,7 @@ export class UsersService {
       username: user.username,
       id: user.id,
       name: user.name,
+      roles: user.roles.map(role => ({id: role.id, name: role.name} as RoleResponseDto)),
       createdAt: user.createdAt.toISOString(),
       updatedAt: user.updatedAt.toISOString(),
     };

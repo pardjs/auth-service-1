@@ -10,6 +10,7 @@ import {
   Query,
   Req,
   UseGuards,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
@@ -18,19 +19,20 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { AuthPointName } from '../../pkg-common/dist';
+import { AuthPointName, CreateUserDto, UpdateUserDto, UserResponse} from '@pardjs/users-service-common';
 import { UsersServiceAuthPoints } from '../auth-points/auth-points.enum';
+import { AuthPointsService } from '../auth-points/auth-points.service';
 import { DynamicRolesGuard } from '../auth/dynamic-roles.guard';
-import { CreateUserDto } from '../users/dto/create-user.dto';
-import { UpdateUserDto } from '../users/dto/update-user.dto';
-import { UserResponse } from '../users/dto/user-response.dto';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
 
 @Controller('/users')
 @ApiUseTags('User')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly authPointsService: AuthPointsService,
+  ) {}
 
   @Post('')
   @ApiOperation({ operationId: 'create', title: 'create' })
@@ -66,6 +68,21 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   currentUser(@Req() req: any) {
     return this.usersService.toResponse(req.user as User);
+  }
+
+  @Get('me/actions/check-access')
+  @ApiOperation({ title: 'check access' })
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
+  async checkAccess(@Req() req: any, @Query('authPointName') authPointName: string) {
+    const user = req.user as User;
+    if (authPointName && authPointName !== 'undefined') {
+      const canAccess = await this.authPointsService.canAccess(authPointName, user.roles);
+      if (!canAccess) {
+        throw new UnauthorizedException();
+      }
+    }
+    return this.usersService.toResponse(user as User);
   }
 
   @Put('/:id')

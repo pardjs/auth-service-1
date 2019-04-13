@@ -7,7 +7,7 @@
     >
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <img src="~assets/buefy.png" alt="Buefy" height="28" />
+          <b class="has-text-white">UsersService </b> Dashboard
         </a>
 
         <div class="navbar-burger">
@@ -48,9 +48,19 @@ export default {
           to: { name: 'index' }
         },
         {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
+          title: 'Users',
+          icon: 'account',
+          to: { name: 'users-list' }
+        },
+        {
+          title: 'Roles',
+          icon: 'account-multiple',
+          to: { name: 'roles-list' }
+        },
+        {
+          title: 'Auth Points',
+          icon: 'circle-edit-outline',
+          to: { name: 'auth-points-list' }
         }
       ]
     }

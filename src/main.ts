@@ -1,4 +1,4 @@
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 config();
 
 import { NestFactory } from '@nestjs/core';
@@ -27,7 +27,7 @@ async function bootstrap() {
     .build();
   const doc = SwaggerModule.createDocument(app, docOptions);
   SwaggerModule.setup('/users-service-api-doc', app, doc);
-  await app.listen(3000);
-  logger.info('severing on http://0.0.0.0:3000');
+  await app.listen(5000);
+  logger.info('severing on http://0.0.0.0:5000');
 }
 bootstrap();

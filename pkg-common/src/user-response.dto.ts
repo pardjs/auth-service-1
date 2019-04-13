@@ -1,4 +1,5 @@
 import { ApiModelProperty } from '@nestjs/swagger';
+import { RoleResponseDto } from './role-response.dto';
 
 export class UserResponse {
   @ApiModelProperty()
@@ -9,6 +10,9 @@ export class UserResponse {
 
   @ApiModelProperty()
   name: string;
+
+  @ApiModelProperty()
+  roles: RoleResponseDto[];
 
   @ApiModelProperty()
   createdAt: string;

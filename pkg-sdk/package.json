@@ -1,5 +1,5 @@
 {
-  "name": "@pardjs/users-service-common",
+  "name": "@pardjs/users-service-sdk",
   "version": "1.0.0",
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",
@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/pardjs/users-service/issues"
   },
-  "homepage": "https://github.com/pardjs/users-service#readme"
+  "homepage": "https://github.com/pardjs/users-service#readme",
+  "dependencies": {
+    "@pardjs/common": "^1.0.2",
+    "@pardjs/users-service-common": "../pkg-common",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/passport-jwt": "^3.0.1"
+  }
 }

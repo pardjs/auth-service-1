@@ -1,10 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { fromAnywhere, logger } from '@pardjs/common';
+import { JwtPayload } from '@pardjs/users-service-common';
 import { Strategy } from 'passport-jwt';
 import { JWT_SECRET } from '../constants';
 import { AuthService } from './auth.service';
-import { JwtPayload } from './jwt-payload.interface';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {

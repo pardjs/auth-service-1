@@ -7,8 +7,8 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { logger, superMd5 } from '@pardjs/common';
 import { spanHours } from '@pardjs/common';
+import { JwtPayload } from '@pardjs/users-service-common';
 import { Repository } from 'typeorm';
-import { JwtPayload } from '../auth/jwt-payload.interface';
 import {
   IP_WHITE_LIST_USER_ID,
   LOGIN_SESSION_LIFE_HOURS,
