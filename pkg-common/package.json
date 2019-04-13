@@ -1,0 +1,19 @@
+{
+  "name": "@pardjs/users-service-common",
+  "version": "1.0.0",
+  "description": "A npm package that holding the logics will be used both by service and sdk.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pardjs/users-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pardjs/users-service/issues"
+  },
+  "homepage": "https://github.com/pardjs/users-service#readme"
+}
