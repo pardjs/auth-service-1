@@ -22,5 +22,5 @@ export const SUPER_ADMIN_INITIAL_PASSWORD =
 export const IP_WHITE_LIST = process.env.IP_WHITE_LIST.split(',');
 export const IP_WHITE_LIST_USER_NAME = process.env.IP_WHITE_LIST_USERNAME;
 // TODO: config via env variable.
-export const ADMIN_USER_ID = 7;
-export const IP_WHITE_LIST_USER_ID = 8;
+export const ADMIN_USER_ID = 1;
+export const IP_WHITE_LIST_USER_ID = 2;

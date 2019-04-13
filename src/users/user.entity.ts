@@ -41,7 +41,7 @@ export class User extends EntityParent {
   @Column({ name: 'password', nullable: true })
   password: string;
 
-  @ManyToMany(type => Role, role => role.users, { cascade: false })
+  @ManyToMany(type => Role, role => role.users, { cascade: false, eager: true })
   @JoinTable({ name: 'User_Role_Link' })
   roles: Role[];
 }

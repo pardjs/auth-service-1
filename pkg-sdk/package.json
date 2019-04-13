@@ -4,6 +4,7 @@
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "npm test"
   },
   "repository": {

@@ -1,9 +1,10 @@
 {
   "name": "@pardjs/users-service-common",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "npm test"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/pardjs/users-service/issues"
   },
-  "homepage": "https://github.com/pardjs/users-service#readme"
+  "homepage": "https://github.com/pardjs/users-service#readme",
+  "dependencies": {
+    "@nestjs/common": "^6.1.0"
+  }
 }

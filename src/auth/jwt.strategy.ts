@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { fromAnywhere } from '@pardjs/common';
-import { ExtractJwt, Strategy } from 'passport-jwt';
+import { fromAnywhere, logger } from '@pardjs/common';
+import { Strategy } from 'passport-jwt';
 import { JWT_SECRET } from '../constants';
 import { AuthService } from './auth.service';
 import { JwtPayload } from './jwt-payload.interface';
@@ -18,6 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(req, payload: JwtPayload) {
     const user = await this.authService.validateLoginSession(payload);
+    logger.info('user found in JwtStrategy', { user });
     req.user = user;
     if (!user) {
       throw new UnauthorizedException(

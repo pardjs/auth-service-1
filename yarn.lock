@@ -416,6 +416,11 @@
     winston "^3.1.2"
     winston-daily-rotate-file "^3.8.0"
 
+"@pardjs/users-service-common@./pkg-common":
+  version "0.0.1"
+  dependencies:
+    "@nestjs/common" "^6.1.0"
+
 "@types/babel__core@^7.1.0":
   version "7.1.0"
   resolved "http://registry.npm.taobao.org/@types/babel__core/download/@types/babel__core-7.1.0.tgz#710f2487dda4dcfd010ca6abb2b4dc7394365c51"
@@ -514,6 +519,11 @@
   integrity sha1-jRmdq03bW7oyNPgxG4BNICevKzo=
   dependencies:
     "@types/node" "*"
+
+"@types/lodash@^4.14.123":
+  version "4.14.123"
+  resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.123.tgz#39be5d211478c8dd3bdae98ee75bb7efe4abfe4d"
+  integrity sha1-Ob5dIRR4yN072umO51u37+Sr/k0=
 
 "@types/mime@*":
   version "2.0.1"

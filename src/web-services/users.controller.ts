@@ -21,19 +21,20 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { MS_ONE_SECOND } from '@pardjs/common';
-import { logger } from '@pardjs/common';
-import { RolesGuard } from '@pardjs/common';
+import { logger, MS_ONE_SECOND } from '@pardjs/common';
 import { Request, Response } from 'express';
 import { IP_WHITE_LIST } from 'src/constants';
+import { AuthPointName } from '../../pkg-common/dist';
+import { UsersServiceAuthPoints } from '../auth-points/auth-points.enum';
+import { DynamicRolesGuard } from '../auth/dynamic-roles.guard';
 import { LoginByUsernameDto } from '../login-session';
 import { LoginResponse } from '../login-session/login-response.dto';
 import { LoginSessionsService } from '../login-session/login-sessions.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { UserResponse } from './dto/user-response.dto';
-import { User } from './user.entity';
-import { UsersService } from './users.service';
+import { CreateUserDto } from '../users/dto/create-user.dto';
+import { UpdateUserDto } from '../users/dto/update-user.dto';
+import { UserResponse } from '../users/dto/user-response.dto';
+import { User } from '../users/user.entity';
+import { UsersService } from '../users/users.service';
 
 @Controller('/users')
 @ApiUseTags('User')
@@ -93,7 +94,7 @@ export class UsersController {
   @ApiOperation({ operationId: 'create', title: 'create' })
   @ApiResponse({ status: HttpStatus.CREATED, type: UserResponse })
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   create(@Body() body: CreateUserDto) {
     return this.usersService.create(body);
   }
@@ -102,7 +103,8 @@ export class UsersController {
   @ApiOperation({ title: 'list' })
   @ApiResponse({ status: HttpStatus.OK, type: UserResponse, isArray: true })
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
+  @AuthPointName(UsersServiceAuthPoints.FIND_USERS)
   async find(
     @Query('limit') limit: number = 10,
     @Query('offset') offset: number = 0,
@@ -126,14 +128,14 @@ export class UsersController {
 
   @Put('/:id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   updateById(@Param('id') id: number, @Body() body: UpdateUserDto) {
     return this.usersService.updateById(id, body);
   }
 
   @Delete(':id')
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   async deleteUser(@Param('id') id: number) {
     return this.usersService.delete(id);
   }

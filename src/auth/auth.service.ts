@@ -6,11 +6,7 @@ import { JwtPayload } from './jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private readonly usersService: UsersService,
-    private readonly loginSessionsService: LoginSessionsService,
-    private readonly jwtService: JwtService,
-  ) {}
+  constructor(private readonly loginSessionsService: LoginSessionsService) {}
 
   async validateLoginSession(payload: JwtPayload): Promise<any> {
     return await this.loginSessionsService.validate(payload);

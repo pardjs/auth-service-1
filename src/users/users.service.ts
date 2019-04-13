@@ -58,9 +58,7 @@ export class UsersService {
 
   async find(options: FindManyOptions<User>) {
     options.where = options.where || {};
-    logger.info(JSON.stringify(options));
     const users = await this.usersRepository.find(options);
-    logger.info(JSON.stringify(users));
     return users.map(this.toResponse);
   }
 
