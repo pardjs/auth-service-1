@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "npm test"
+    "test": "npm test",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/pardjs/users-service#readme",
   "dependencies": {
     "@nestjs/common": "^6.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.3"
   }
 }

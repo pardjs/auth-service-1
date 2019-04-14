@@ -4,3 +4,4 @@ export * from './jwt-payload.interface';
 export * from './role-response.dto';
 export * from './update-user.dto';
 export * from './user-response.dto';
+export * from './create-user.dto';

@@ -24,6 +24,8 @@
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
     "@pardjs/common": "^1.0.2",
+    "@pardjs/users-service-common": "0.0.1",
+    "@pardjs/users-service-sdk": "^0.0.2",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3"

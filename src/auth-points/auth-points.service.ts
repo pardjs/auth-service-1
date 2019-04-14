@@ -1,5 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { logger } from '@pardjs/common';
 import * as _ from 'lodash';
 import { FindOneOptions, Repository } from 'typeorm';
 import { Role } from '../roles/role.entity';
@@ -9,7 +10,6 @@ import {
   UsersServiceAuthPoints,
 } from './auth-points.enum';
 import { AuthPointsErrors } from './errors';
-import { logger } from '@pardjs/common';
 
 @Injectable()
 export class AuthPointsService {

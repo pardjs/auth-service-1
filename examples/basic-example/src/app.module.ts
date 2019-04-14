@@ -1,5 +1,5 @@
-import { PardjsUsersServiceSdkModule } from './../../../pkg-sdk/src/sdk.module';
 import { Module } from '@nestjs/common';
+import {PardjsUsersServiceSdkModule} from '@pardjs/users-service-sdk';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 

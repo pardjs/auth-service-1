@@ -81,8 +81,10 @@
     winston "^3.1.2"
     winston-daily-rotate-file "^3.8.0"
 
-"@pardjs/users-service-common@../pkg-common":
+"@pardjs/users-service-common@0.0.1":
   version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@pardjs/users-service-common/-/users-service-common-0.0.1.tgz#39c85f62d10dac1a4cb6e658e5e3e282d3eac6b3"
+  integrity sha512-ClYWJZ9rcQzjBfkzIUo0sqi0LbRgjV49DwrdRBHREbrhSO9vHH1DCEC5qo6uvA66HOk2DHV81d4qr98Vh56rvw==
   dependencies:
     "@nestjs/common" "^6.1.0"
 
@@ -1853,6 +1855,11 @@ typeorm@^0.2.16:
     xml2js "^0.4.17"
     yargonaut "^1.1.2"
     yargs "^13.2.1"
+
+typescript@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.4.3.tgz#0eb320e4ace9b10eadf5bc6103286b0f8b7c224f"
+  integrity sha512-FFgHdPt4T/duxx6Ndf7hwgMZZjZpB+U0nMNGVCYPq0rEzWKjEDobm4J6yb3CS7naZ0yURFqdw9Gwc7UOh/P9oQ==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"

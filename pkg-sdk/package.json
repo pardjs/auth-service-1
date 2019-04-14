@@ -1,11 +1,12 @@
 {
   "name": "@pardjs/users-service-sdk",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "npm test"
+    "test": "npm test",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,10 +20,11 @@
   "homepage": "https://github.com/pardjs/users-service#readme",
   "dependencies": {
     "@pardjs/common": "^1.0.2",
-    "@pardjs/users-service-common": "../pkg-common",
+    "@pardjs/users-service-common": "0.0.1",
     "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
-    "@types/passport-jwt": "^3.0.1"
+    "@types/passport-jwt": "^3.0.1",
+    "typescript": "^3.4.3"
   }
 }
