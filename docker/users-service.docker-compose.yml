@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  pardjs-users-service:
+    container_name: pardjs-users-service
+    image: registry.cn-shanghai.aliyuncs.com/pardjs/users-service:1.0.1
+    restart: always
+    environment: 
+      DB_URL: postgres://pardjs:example@db:5432/pardjs-users-service
+    links: 
+      - pardjs-users-service-db:db
+    ports:
+      - 5000:5000
+    networks: 
+      - pardjs-users-service
+networks: 
+  pardjs-users-service:

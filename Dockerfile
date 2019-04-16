@@ -15,4 +15,4 @@ RUN yarn
 RUN yarn run build
 RUN rm -rf ./src
 RUN ls -al
-CMD [ "pm2-runtime", "start", "pm2.json" ]
+CMD yarn run start:prod
