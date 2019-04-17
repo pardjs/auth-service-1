@@ -7,6 +7,7 @@
     "buefy",
     "codecov",
     "execpath",
+    "forin",
     "gitignore",
     "goodbai",
     "hotmail",
@@ -27,6 +28,7 @@
     "typedoc",
     "typeorm",
     "untracked",
+    "upsert",
     "varchar",
     "websockets"
   ],

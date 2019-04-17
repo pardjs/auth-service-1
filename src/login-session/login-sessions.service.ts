@@ -7,7 +7,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { logger, superMd5 } from '@pardjs/common';
 import { spanHours } from '@pardjs/common';
-import { JwtPayload } from '@pardjs/users-service-common';
+import { JwtPayload, LoginByUsernameDto, LoginResponse } from '@pardjs/users-service-common';
 import { Repository } from 'typeorm';
 import {
   IP_WHITE_LIST_USER_ID,
@@ -18,8 +18,6 @@ import {
 import { UserErrors } from '../users/errors';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
-import { LoginByUsernameDto } from './login-by-username.dto';
-import { LoginResponse } from './login-response.dto';
 import { LoginSession } from './login-session.entity';
 
 @Injectable()

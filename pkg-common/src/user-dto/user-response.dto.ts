@@ -1,5 +1,5 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { RoleResponseDto } from './role-response.dto';
+import { RoleResponseDto } from '../role-dto/role-response.dto';
 
 export class UserResponse {
   @ApiModelProperty()

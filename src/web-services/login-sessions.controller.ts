@@ -19,12 +19,9 @@ import {
 import { logger, MS_ONE_SECOND } from '@pardjs/common';
 import { Request, Response } from 'express';
 
+import { LoginByUsernameDto, LoginResponse } from '@pardjs/users-service-common';
 import { IP_WHITE_LIST } from '../constants';
-import {
-  LoginByUsernameDto,
-  LoginResponse,
-  LoginSessionsService,
-} from '../login-session';
+import { LoginSessionsService } from '../login-session';
 import { User } from '../users';
 
 @Controller()

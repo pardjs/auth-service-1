@@ -1,0 +1,1 @@
+docker build . -t registry.cn-shanghai.aliyuncs.com/pardjs/users-service:$1

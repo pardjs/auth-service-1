@@ -18,12 +18,12 @@ async function bootstrap() {
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
+  const apiPrefix = process.env.NODE_ENV === 'production' ? '/users-service-api' : '';
+  app.setGlobalPrefix(apiPrefix);
   const docOptions = new DocumentBuilder()
     .setTitle('Pardjs Users service')
     .addBearerAuth()
-    .setBasePath(
-      process.env.NODE_ENV === 'production' ? '/users-service-api' : '',
-    )
+    .setBasePath(apiPrefix)
     .build();
   const doc = SwaggerModule.createDocument(app, docOptions);
   SwaggerModule.setup('/users-service-api-doc', app, doc);
