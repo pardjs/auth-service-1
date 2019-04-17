@@ -74,7 +74,7 @@ export class UsersService {
       username: user.username,
       id: user.id,
       name: user.name,
-      roles: user.roles.map(role => ({id: role.id, name: role.name} as RoleResponseDto)),
+      roles: user.roles ? user.roles.map(role => ({id: role.id, name: role.name} as RoleResponseDto)) : [],
       createdAt: user.createdAt.toISOString(),
       updatedAt: user.updatedAt.toISOString(),
     };
