@@ -16,6 +16,7 @@
     "nestjs",
     "nuxt",
     "nuxtjs",
+    "ormconfig",
     "pardjs",
     "postgres",
     "precommit",

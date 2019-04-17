@@ -5,6 +5,7 @@ module.exports = {
     synchronize: false,
     type: 'postgres',
     migrations: ["db-migration/*.ts"],
+    migrationsTableName: "users_migration_table",
     cli: {
         migrationsDir: "db-migration"
     },
