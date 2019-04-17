@@ -1,19 +1,25 @@
 import { BadRequestException,
   HttpService, HttpStatus, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { logger } from '@pardjs/common';
-import { UserResponse } from '@pardjs/users-service-common';
-import { AxiosError, AxiosResponse } from 'axios';
+import { LoginResponse, RegisterAuthPointsDto, UserResponse } from '@pardjs/users-service-common';
+import axios, { AxiosError, AxiosResponse, AxiosInstance } from 'axios';
 import { PARDJS_USERS_SERVICE_BASE_URL } from './constants';
 
 @Injectable()
 export class PardjsUsersService {
-  constructor(private readonly httpService: HttpService){}
+  private httpService: AxiosInstance;
+  constructor() {
+    this.httpService = axios.create({
+      baseURL: PARDJS_USERS_SERVICE_BASE_URL,
+    });
+    logger.info('users service base url', {PARDJS_USERS_SERVICE_BASE_URL});
+  }
 
   private whiteListUserToken?: string;
 
-  async registerAuthPoints(...authPoints: string[]) {
+  async registerAuthPoints(data: RegisterAuthPointsDto) {
     const token = await this.getWhiteListUserToken();
-    const res = await this.httpService.post(PARDJS_USERS_SERVICE_BASE_URL + '/auth-points/actions/register?access_token=' + token, {authPoints});
+    const res = await this.httpService.post('/auth-points/actions/register?access_token=' + token, data);
     return true;
   }
 
@@ -34,29 +40,31 @@ export class PardjsUsersService {
   }
 
   async loginWhiteListUser() {
+    const url = '/login-by-ip';
     try {
       // TODO: LoginResponse as the return type
-      const res = await this.httpService.post<any>(PARDJS_USERS_SERVICE_BASE_URL + '/login-by-id').toPromise();
-      return res.data.token as string;
+      const res = await this.httpService.post<LoginResponse>(url);
+      return res.data.token;
     } catch (err) {
-      this.handleError(err);
+      this.handleError(err, 'loginWhiteListUser', url);
     }
   }
 
   async canAccess(token: string, authPointName?: string) {
+    const url = '/users/me/actions/check-access?access_token=' + token + '&authPointName=' + authPointName;
     try {
-      const res = await this.httpService.get<UserResponse>(PARDJS_USERS_SERVICE_BASE_URL +
-        '/users/me/actions/check-access?access_token=' + token + '&authPointName=' + authPointName).toPromise();
+      const res = await this.httpService.get<UserResponse>(url);
       return res.data;
     } catch (err) {
-      this.handleError(err);
+      this.handleError(err, 'canAccess', url);
     }
   }
 
-  private handleError(err: any) {
+  private handleError(err: any, methodName?: string, url?: string) {
     const httpError = err as AxiosError;
-    logger.error('http error when checking access', Object.keys(err));
+    logger.error('http error when checking access', {errMessage: err.message});
     if (!err.response) {
+      logger.error('connection failed', {err, methodName, url});
       throw new InternalServerErrorException({
         type: 'CONNECT_PARDJS_USERS_SERVER_FAILED',
         message: 'connect to pardjs users service failed.',

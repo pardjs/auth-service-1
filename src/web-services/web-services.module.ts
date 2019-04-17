@@ -4,6 +4,7 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthModule } from '../auth';
 import { AuthPointsModule } from '../auth-points';
 import { RolesModule } from '../roles';
+import { AuthPointController } from './auth-points.controller';
 import { LoginSessionsController } from './login-sessions.controller';
 import { UsersController } from './users.controller';
 
@@ -15,6 +16,6 @@ import { UsersController } from './users.controller';
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   providers: [],
-  controllers: [UsersController, LoginSessionsController],
+  controllers: [UsersController, LoginSessionsController, AuthPointController],
 })
 export class WebServicesModule {}
