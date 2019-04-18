@@ -8,7 +8,11 @@ const childLogger = logger.child({ service: 'dynamic-roles-guard' });
 
 @Injectable()
 export class AirRolesGuard implements CanActivate {
-  constructor(private readonly service: PardjsUsersService) {}
+  constructor(private service: PardjsUsersService) {
+    if (!this.service) {
+      this.service = new PardjsUsersService();
+    }
+  }
   public async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     if (!request.headers) {
