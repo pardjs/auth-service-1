@@ -25,9 +25,10 @@ async function bootstrap() {
     .setTitle('Pardjs Users service')
     .addBearerAuth()
     .setBasePath(SERVICE_BASE + apiPrefix)
+    .setSchemes('http', 'https')
     .build();
   const doc = SwaggerModule.createDocument(app, docOptions);
-  SwaggerModule.setup('/api-doc', app, doc);
+  SwaggerModule.setup(SERVICE_BASE + (SERVICE_BASE ? '-' : '/') + 'api-doc', app, doc);
   await app.listen(PORT);
   logger.info('severing on http://0.0.0.0:' + PORT);
 }
