@@ -25,6 +25,7 @@ import { AuthPointsService } from '../auth-points/auth-points.service';
 import { DynamicRolesGuard } from '../auth/dynamic-roles.guard';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
+import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from './../constants';
 
 @Controller('/users')
 @ApiUseTags('User')
@@ -76,7 +77,7 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   async checkAccess(@Req() req: any, @Query('authPointName') authPointName: string) {
     const user = req.user as User;
-    if (authPointName && authPointName !== 'undefined') {
+    if ([ADMIN_USER_ID, IP_WHITE_LIST_USER_ID].includes(user.id) === false && authPointName && authPointName !== 'undefined') {
       const canAccess = await this.authPointsService.canAccess(authPointName, user.roles);
       if (!canAccess) {
         throw new UnauthorizedException();

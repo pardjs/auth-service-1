@@ -11,7 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime
 RUN echo ${TZ} > /etc/timezone
 RUN npm install yarn -g
 RUN npm install typescript -g
-RUN mkdir -p /usr/share/pardjs-users-service
+RUN mkdir -p /usr/share/pardjs-service
 WORKDIR /usr/share/pardjs-service
 COPY ./package.json /usr/share/pardjs-service
 COPY ./yarn.lock /usr/share/pardjs-service
