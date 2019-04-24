@@ -11,6 +11,7 @@ import {
 } from '@pardjs/common';
 import * as cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
+import { PORT, SERVICE_BASE } from './constants';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,16 +19,16 @@ async function bootstrap() {
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
-  const apiPrefix = process.env.NODE_ENV === 'production' ? '/users-service-api' : '';
+  const apiPrefix = '/api';
   app.setGlobalPrefix(apiPrefix);
   const docOptions = new DocumentBuilder()
     .setTitle('Pardjs Users service')
     .addBearerAuth()
-    .setBasePath(apiPrefix)
+    .setBasePath(SERVICE_BASE + apiPrefix)
     .build();
   const doc = SwaggerModule.createDocument(app, docOptions);
-  SwaggerModule.setup('/users-service-api-doc', app, doc);
-  await app.listen(5000);
-  logger.info('severing on http://0.0.0.0:5000');
+  SwaggerModule.setup('/api-doc', app, doc);
+  await app.listen(PORT);
+  logger.info('severing on http://0.0.0.0:' + PORT);
 }
 bootstrap();

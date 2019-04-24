@@ -24,3 +24,5 @@ export const IP_WHITE_LIST_USER_NAME = process.env.IP_WHITE_LIST_USERNAME;
 // TODO: config via env variable.
 export const ADMIN_USER_ID = 1;
 export const IP_WHITE_LIST_USER_ID = 2;
+export const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
+export const SERVICE_BASE = process.env.SERVICE_BASE || '';
