@@ -45,6 +45,7 @@ export default {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'https://staging.swkelearn.com/users-service/api'
   },
 
   /*
