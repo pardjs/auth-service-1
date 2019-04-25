@@ -77,4 +77,8 @@ export class AuthPointsService {
         await this.upsertByName(item.name, item.displayName);
       }
   }
+
+  find() {
+    return this.repository.findAndCount();
+  }
 }
