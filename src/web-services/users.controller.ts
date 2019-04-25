@@ -23,9 +23,9 @@ import { AuthPointName, CreateUserDto, UpdateUserDto, UserResponse} from '@pardj
 import { UsersServiceAuthPoints } from '../auth-points/auth-points.enum';
 import { AuthPointsService } from '../auth-points/auth-points.service';
 import { DynamicRolesGuard } from '../auth/dynamic-roles.guard';
+import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../constants';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
-import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from './../constants';
 
 @Controller('/users')
 @ApiUseTags('User')
@@ -75,6 +75,10 @@ export class UsersController {
   @ApiOperation({ title: 'check access' })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
+  @ApiResponse({
+    status: HttpStatus.OK,
+    type: UserResponse,
+  })
   async checkAccess(@Req() req: any, @Query('authPointName') authPointName: string) {
     const user = req.user as User;
     if ([ADMIN_USER_ID, IP_WHITE_LIST_USER_ID].includes(user.id) === false && authPointName && authPointName !== 'undefined') {
@@ -89,6 +93,10 @@ export class UsersController {
   @Put('/:id')
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
+  @ApiResponse({
+    type: UserResponse,
+    status: HttpStatus.OK,
+  })
   updateById(@Param('id') id: number, @Body() body: UpdateUserDto) {
     return this.usersService.updateById(id, body);
   }

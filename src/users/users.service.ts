@@ -69,7 +69,7 @@ export class UsersService {
     return user;
   }
 
-  toResponse(user: User) {
+  toResponse(user: User): UserResponse {
     return {
       username: user.username,
       id: user.id,
