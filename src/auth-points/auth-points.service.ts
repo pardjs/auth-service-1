@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { logger } from '@pardjs/common';
 import { RegisterAuthPointsDto } from '@pardjs/users-service-common';
 import * as _ from 'lodash';
-import { FindOneOptions, Repository } from 'typeorm';
+import { FindOneOptions, Repository, FindManyOptions } from 'typeorm';
 import { Role } from '../roles/role.entity';
 import { AuthPoint } from './auth-point.entity';
 import {
@@ -78,7 +78,11 @@ export class AuthPointsService {
       }
   }
 
-  find() {
+  find(options?: FindManyOptions<AuthPoint>) {
+    return this.repository.find(options);
+  }
+
+  findAndCount() {
     return this.repository.findAndCount();
   }
 }

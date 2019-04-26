@@ -19,25 +19,28 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { AuthPointName, CreateUserDto, UpdateUserDto, UserResponse} from '@pardjs/users-service-common';
+import { AuthPointName, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponse} from '@pardjs/users-service-common';
 import { UsersServiceAuthPoints } from '../auth-points/auth-points.enum';
 import { AuthPointsService } from '../auth-points/auth-points.service';
 import { DynamicRolesGuard } from '../auth/dynamic-roles.guard';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../constants';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
+import { UsersApiService } from './users-api.service';
 
 @Controller('/users')
 @ApiUseTags('User')
 export class UsersController {
   constructor(
     private readonly usersService: UsersService,
+    private readonly userApiService: UsersApiService,
     private readonly authPointsService: AuthPointsService,
   ) {}
 
   @Post('')
   @ApiOperation({ operationId: 'create', title: 'create' })
   @ApiResponse({ status: HttpStatus.CREATED, type: UserResponse })
+  @AuthPointName(UsersServiceAuthPoints.CREATE_USER)
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   create(@Body() body: CreateUserDto) {
@@ -90,7 +93,20 @@ export class UsersController {
     return this.usersService.toResponse(user as User);
   }
 
+  @Put('/:id/roles')
+  @ApiBearerAuth()
+  @AuthPointName(UsersServiceAuthPoints.SET_USER_ROLES)
+  @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
+  @ApiResponse({
+    type: UserResponse,
+    status: HttpStatus.OK,
+  })
+  setUserRoles(@Param('id') id: number, @Body() body: SetUserRolesDto) {
+    return this.userApiService.setUserRoles(id, body);
+  }
+
   @Put('/:id')
+  @AuthPointName(UsersServiceAuthPoints.UPDATE_USER)
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   @ApiResponse({
@@ -103,6 +119,7 @@ export class UsersController {
 
   @Delete(':id')
   @ApiBearerAuth()
+  @AuthPointName(UsersServiceAuthPoints.DELETE_USER)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   async deleteUser(@Param('id') id: number) {
     return this.usersService.delete(id);

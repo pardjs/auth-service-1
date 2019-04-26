@@ -416,10 +416,10 @@
     winston "^3.1.2"
     winston-daily-rotate-file "^3.8.0"
 
-"@pardjs/users-service-common@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@pardjs/users-service-common/-/users-service-common-0.0.4.tgz#75347fc9caa14d354abc4411704da57f3e68e41d"
-  integrity sha512-WMX41gXNHaJQrqcF/eC8M09mRW/zU3u58qv6KfQUcXx4OSoyeEySuePaqfsRZfBzgcuW9nzBp66caO9nwsy3GQ==
+"@pardjs/users-service-common@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@pardjs/users-service-common/-/users-service-common-0.1.0.tgz#c353b50878d1a09c7316b954ba548f8baa093d03"
+  integrity sha512-3CeIbsIjHs5TjfK6B7ebfMVQdGNyjkfNLeAIlxV91x2v5kdG9zWSCDJsx4sxNyVPokYnNf27jtjDjXmUDZIaEQ==
   dependencies:
     "@nestjs/common" "^6.1.0"
 

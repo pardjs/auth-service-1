@@ -6,6 +6,10 @@ export enum UsersServiceAuthPoints {
     ACT_USER_AUTH_CHECK = 'USERS-SERVICE_ACT_USER-AUTH-CHECK',
     ACT_AUTH_POINT_REGISTER = 'USERS-SERVICE_ACT_AUTH_POINT_REGISTER',
     FIND_AUTH_POINTS = 'USERS-SERVICE_FIND_AUTH_POINTS',
+    FIND_ROLES = 'USERS_SERVICE-FIND_ROLES',
+    SET_USER_ROLES = 'USERS_SERVICE-SET_USER_ROLES',
+    CREATE_USER = 'USERS_SERVICE-CREATE_USER',
+    FIND_ROLE = 'USERS_SERVICE-FIND_ROLE',
 }
 
 export const UsersServiceAuthPointNames = {
@@ -18,4 +22,8 @@ export const UsersServiceAuthPointNames = {
   [UsersServiceAuthPoints.ACT_AUTH_POINT_REGISTER]:
     'register auth points via api',
   [UsersServiceAuthPoints.FIND_AUTH_POINTS]: 'find auth points',
+  [UsersServiceAuthPoints.FIND_ROLES]: 'find roles',
+  [UsersServiceAuthPoints.SET_USER_ROLES]: 'set user roles',
+  [UsersServiceAuthPoints.CREATE_USER]: 'create user',
+  [UsersServiceAuthPoints.FIND_ROLE]: 'find role by id',
 };

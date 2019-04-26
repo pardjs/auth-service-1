@@ -101,4 +101,8 @@ export class UsersService {
   findByUsername(username: string) {
     return this.usersRepository.findOne({ where: { username } });
   }
+
+  save(user: User) {
+    return this.usersRepository.save(user);
+  }
 }
