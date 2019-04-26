@@ -3,6 +3,7 @@ import { IsEnum, IsString, MinLength } from 'class-validator';
 
 export class CreateUserDto {
   @ApiModelProperty({
+    type: String,
     example: 'goodbai',
   })
   @IsString()
@@ -10,6 +11,7 @@ export class CreateUserDto {
 
   @ApiModelProperty({
     example: 'P@ssW0rd',
+    type: String,
   })
   @IsString()
   @MinLength(5)
@@ -17,6 +19,7 @@ export class CreateUserDto {
 
   @ApiModelProperty({
     example: '白国栋',
+    type: String,
   })
   @MinLength(2)
   @IsString()

@@ -1,10 +1,21 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 
 export class LoginResponse {
-    @ApiModelProperty()
+    @ApiModelProperty({
+        type: Number,
+        example: 1,
+    })
     userId: number;
-    @ApiModelProperty()
+
+    @ApiModelProperty({
+        type: String,
+        example: 1,
+    })
     token: string;
-    @ApiModelProperty()
+
+    @ApiModelProperty({
+        type: Number,
+        example: 2000
+    })
     expiresIn: number;
 }

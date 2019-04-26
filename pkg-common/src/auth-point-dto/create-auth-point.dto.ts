@@ -2,11 +2,17 @@ import { ApiModelProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class CreateAuthPointDto {
-    @ApiModelProperty()
+    @ApiModelProperty({
+        type: String,
+        example: 'USERS_SERVICE-FIND_USERS',
+    })
     @IsString()
     name: string;
 
-    @ApiModelProperty()
+    @ApiModelProperty({
+        type: String,
+        example: 'Find users',
+    })
     @IsString()
     displayName: string;
 }

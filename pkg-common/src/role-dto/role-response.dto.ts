@@ -1,9 +1,15 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 
 export class RoleResponseDto {
-  @ApiModelProperty()
+  @ApiModelProperty({
+    type: Number,
+    example: 1,
+  })
   id: number;
 
-  @ApiModelProperty()
+  @ApiModelProperty({
+    type: String,
+    example: 'default role',
+  })
   name: string;
 }
