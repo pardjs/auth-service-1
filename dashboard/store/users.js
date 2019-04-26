@@ -19,14 +19,9 @@ export const mutations = {
     todo.done = !todo.done
   },
   fetch(state) {
-    if (!state.accessToken) {
-      return this.$router.push('/login')
-    }
-    this.$axios
-      .get('users', { params: { access_token: state.accessToken } })
-      .then(res => {
-        state.list = res.data.data
-      })
+    this.$axios.get('users').then(res => {
+      state.list = res.data.data
+    })
   },
   async login(state, { username, password }) {
     try {

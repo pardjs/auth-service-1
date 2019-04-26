@@ -3,18 +3,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-  fetch() {
-    const token = window.localStorage.getItem('accessToken')
-    if (!token) {
-      return this.$router.push('/login')
-    }
-    this.$axios
-      .get('auth-points', {
-        params: { access_token: token }
-      })
-      .then(res => {
-        state.list = res.data.data
-      })
+  fetch(state) {
+    this.$axios.get('auth-points').then(res => {
+      state.list = res.data.data
+      console.log(state.list)
+    })
   },
   add(state, text) {
     state.list.push({

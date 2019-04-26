@@ -50,12 +50,12 @@ export default {
         {
           title: 'Users',
           icon: 'account',
-          to: { name: 'users-list' }
+          to: { name: 'users' }
         },
         {
           title: 'Roles',
           icon: 'account-multiple',
-          to: { name: 'roles-list' }
+          to: { name: 'roles' }
         },
         {
           title: 'Auth Points',

@@ -9,6 +9,11 @@ export const mutations = {
       done: false
     })
   },
+  fetch(state) {
+    this.$axios.get('roles').then(res => {
+      state.list = res.data.data
+    })
+  },
   remove(state, { todo }) {
     state.list.splice(state.list.indexOf(todo), 1)
   },

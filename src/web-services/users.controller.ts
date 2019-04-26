@@ -74,6 +74,14 @@ export class UsersController {
     return this.usersService.toResponse(req.user as User);
   }
 
+  @Get(':id')
+  @ApiBearerAuth()
+  @AuthPointName(UsersServiceAuthPoints.FIND_ONE_USER)
+  @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
+  findOne(@Param('id') id: number) {
+    return this.usersService.findById(id);
+  }
+
   @Get('me/actions/check-access')
   @ApiOperation({ title: 'check access' })
   @ApiBearerAuth()
