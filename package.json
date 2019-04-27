@@ -31,7 +31,7 @@
     "@nestjs/swagger": "^3.0.2",
     "@nestjs/typeorm": "^6.0.0",
     "@nestjs/websockets": "^6.1.0",
-    "@pardjs/common": "1.0.2",
+    "@pardjs/common": "^1.1.1",
     "@pardjs/users-service-common": "^0.1.0",
     "cookie-parser": "^1.4.4",
     "lodash": "^4.17.11",
