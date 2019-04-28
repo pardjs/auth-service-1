@@ -17,6 +17,9 @@ export class User extends EntityParent {
   @Column()
   name: string;
 
+  @Column({default: true, nullable: true})
+  shownInApp: boolean;
+
   @Index('idx-user-username-unique', { unique: true, sparse: true })
   @Column({ nullable: true })
   username: string;
@@ -37,6 +40,9 @@ export class User extends EntityParent {
 
   @Column({ type: 'boolean', default: false })
   isDisabled: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  isDeleted: boolean;
 
   @Column({ name: 'password', nullable: true })
   password: string;

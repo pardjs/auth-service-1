@@ -19,6 +19,12 @@ export class Role extends EntityParent {
   @Column()
   name: string;
 
+  @Column({nullable: true, default: false})
+  isDefault: boolean;
+
+  @Column({ nullable: true, default: false })
+  shownInApp: boolean;
+
   @ManyToMany(type => User, user => user.roles)
   users: User[];
 

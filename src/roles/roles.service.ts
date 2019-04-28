@@ -44,4 +44,8 @@ export class RolesService {
   save(role: Role) {
     return this.repository.save(role);
   }
+
+  findDefaultRoles() {
+    return this.repository.find({where: {isDefault: true}});
+  }
 }

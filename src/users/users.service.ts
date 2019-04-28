@@ -3,13 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { superMd5 } from '@pardjs/common';
 import { logger } from '@pardjs/common';
 import {CreateUserDto, RoleResponseDto, UpdateUserDto, UserResponse} from '@pardjs/users-service-common';
-import { FindManyOptions, Repository } from 'typeorm';
+import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
 import {
   IP_WHITE_LIST_USER_NAME,
   PASSWORD_HASH_KEY,
   SUPER_ADMIN_INITIAL_PASSWORD,
 } from '../constants';
-import { UserErrors } from './errors';
+import { Errors } from '../errors';
 import { User } from './user.entity';
 
 const childLogger = logger.child({ service: 'users' });
@@ -28,6 +28,7 @@ export class UsersService {
           username: 'admin',
           password: SUPER_ADMIN_INITIAL_PASSWORD,
           name: '超级管理员',
+          shownInApp: false,
         });
         // Can access any point by default, but can be configured.
         // TODO: make white list user can be configured.
@@ -35,29 +36,35 @@ export class UsersService {
           username: IP_WHITE_LIST_USER_NAME,
           password: 'n/a',
           name: IP_WHITE_LIST_USER_NAME,
+          shownInApp: false,
         });
       }
     })();
   }
 
-  async create(data: CreateUserDto): Promise<UserResponse> {
+  async create(data: DeepPartial<User>) {
     const newUser = this.usersRepository.create({
       username: data.username,
       password: superMd5(data.password, PASSWORD_HASH_KEY),
       name: data.name,
     });
     const savedUser = await this.usersRepository.save(newUser);
-    return this.toResponse(savedUser);
+    return savedUser;
   }
 
-  async count() {
-    return this.usersRepository.count();
+  async count(options?: FindManyOptions<User>) {
+    return this.usersRepository.count(options);
   }
 
   async find(options: FindManyOptions<User>) {
     options.where = options.where || {};
     const users = await this.usersRepository.find(options);
-    return users.map(this.toResponse);
+    return users;
+  }
+
+  async changePassword(user: User, newPassword: string) {
+    user.password = superMd5(newPassword, PASSWORD_HASH_KEY);
+    return this.save(user);
   }
 
   delete(id: number) {
@@ -69,33 +76,28 @@ export class UsersService {
     return user;
   }
 
-  toResponse(user: User): UserResponse {
-    return {
-      username: user.username,
-      id: user.id,
-      name: user.name,
-      roles: user.roles ? user.roles.map(role => ({id: role.id, name: role.name} as RoleResponseDto)) : [],
-      createdAt: user.createdAt.toISOString(),
-      updatedAt: user.updatedAt.toISOString(),
-    };
-  }
-
   async findOne(filter: Partial<User>) {
     return this.usersRepository.findOne({ ...filter });
   }
 
-  async updateById(id: number, data: UpdateUserDto) {
+  async updateById(id: number, data: UpdateUserDto | DeepPartial<User>, onlyShown = false) {
     const found = await this.findOne({ id });
-    if (!found) {
-      throw new BadRequestException(UserErrors.USER_NOT_FOUND);
+    if (!found || (onlyShown && !found.shownInApp)) {
+      throw new BadRequestException(Errors.USER_NOT_FOUND);
     }
     found.username = data.username;
     found.name = data.name;
     if (data.password) {
       found.password = superMd5(data.password, PASSWORD_HASH_KEY);
     }
+    if ((data as User).shownInApp === false) {
+      found.shownInApp = false;
+    }
+    if ((data as User).shownInApp === true) {
+      found.shownInApp = true;
+    }
     const saved = await this.usersRepository.save(found);
-    return this.toResponse(saved);
+    return saved;
   }
 
   findByUsername(username: string) {
@@ -104,5 +106,9 @@ export class UsersService {
 
   save(user: User) {
     return this.usersRepository.save(user);
+  }
+
+  async softDelete(id: number) {
+    await this.usersRepository.update({id}, {isDeleted: true});
   }
 }

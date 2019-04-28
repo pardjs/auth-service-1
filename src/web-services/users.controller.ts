@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -24,8 +25,10 @@ import { UsersServiceAuthPoints } from '../auth-points/auth-points.enum';
 import { AuthPointsService } from '../auth-points/auth-points.service';
 import { DynamicRolesGuard } from '../auth/dynamic-roles.guard';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../constants';
+import { Errors } from '../errors';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
+import { ChangePasswordDto } from './change-password.dto';
 import { UsersApiService } from './users-api.service';
 
 @Controller('/users')
@@ -44,7 +47,7 @@ export class UsersController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   create(@Body() body: CreateUserDto) {
-    return this.usersService.create(body);
+    return this.userApiService.create(body);
   }
 
   @Get('')
@@ -60,26 +63,48 @@ export class UsersController {
     const data = await this.usersService.find({
       skip: offset,
       take: limit,
+      where: {
+        shownInApp: true,
+        isDeleted: false,
+      },
       order: { id: 'DESC' },
     });
-    const count = await this.usersService.count();
+    const count = await this.usersService.count({
+      where: {
+        shownInApp: true,
+        isDeleted: false,
+      },
+    });
     return { data, count };
   }
 
-  @Get('me')
+  @Get('/me')
   @ApiOperation({ title: 'currentUser' })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   currentUser(@Req() req: any) {
-    return this.usersService.toResponse(req.user as User);
+    return this.userApiService.toResponse(req.user as User);
+  }
+
+  @Get('/me/change-password')
+  @ApiOperation({ title: 'currentUser' })
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
+  changePassword(@Req() req: any, @Body() data: ChangePasswordDto) {
+    const user = req.user as UserResponse;
+    return this.userApiService.changePassword(user, data);
   }
 
   @Get(':id')
   @ApiBearerAuth()
   @AuthPointName(UsersServiceAuthPoints.FIND_ONE_USER)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
-  findOne(@Param('id') id: number) {
-    return this.usersService.findById(id);
+  async findOne(@Param('id') id: number) {
+    const found = await this.usersService.findById(id);
+    if (!found || !found.shownInApp) {
+      throw new BadRequestException(Errors.USER_NOT_FOUND);
+    }
+    return this.userApiService.toResponse(found);
   }
 
   @Get('me/actions/check-access')
@@ -98,7 +123,7 @@ export class UsersController {
         throw new UnauthorizedException();
       }
     }
-    return this.usersService.toResponse(user as User);
+    return this.userApiService.toResponse(user as User);
   }
 
   @Put('/:id/roles')
@@ -110,6 +135,9 @@ export class UsersController {
     status: HttpStatus.OK,
   })
   setUserRoles(@Param('id') id: number, @Body() body: SetUserRolesDto) {
+    if ([ADMIN_USER_ID, IP_WHITE_LIST_USER_ID].includes(id)) {
+      throw new BadRequestException(Errors.BAD_OPERATION);
+    }
     return this.userApiService.setUserRoles(id, body);
   }
 
@@ -121,8 +149,12 @@ export class UsersController {
     type: UserResponse,
     status: HttpStatus.OK,
   })
-  updateById(@Param('id') id: number, @Body() body: UpdateUserDto) {
-    return this.usersService.updateById(id, body);
+  async updateById(@Param('id') id: number, @Body() body: UpdateUserDto) {
+    if ([ADMIN_USER_ID, IP_WHITE_LIST_USER_ID].includes(id)) {
+      throw new BadRequestException(Errors.BAD_OPERATION);
+    }
+    const user = await this.usersService.updateById(id, body, true);
+    return this.userApiService.toResponse(user);
   }
 
   @Delete(':id')
@@ -130,6 +162,9 @@ export class UsersController {
   @AuthPointName(UsersServiceAuthPoints.DELETE_USER)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   async deleteUser(@Param('id') id: number) {
-    return this.usersService.delete(id);
+    if ([ADMIN_USER_ID, IP_WHITE_LIST_USER_ID].includes(id)) {
+      throw new BadRequestException(Errors.BAD_OPERATION);
+    }
+    return this.usersService.softDelete(id);
   }
 }

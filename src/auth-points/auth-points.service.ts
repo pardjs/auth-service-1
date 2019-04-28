@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { logger } from '@pardjs/common';
 import { RegisterAuthPointsDto } from '@pardjs/users-service-common';
 import * as _ from 'lodash';
-import { FindOneOptions, Repository, FindManyOptions } from 'typeorm';
+import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
 import { Role } from '../roles/role.entity';
 import { AuthPoint } from './auth-point.entity';
 import {
