@@ -425,6 +425,62 @@
   dependencies:
     "@nestjs/common" "^6.1.0"
 
+"@sentry/core@5.1.2":
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/@sentry/core/download/@sentry/core-5.1.2.tgz#e03eb85baf959c8458662942d5acfacb2e7b4c99"
+  integrity sha1-4D64W6+VnIRYZilC1az6yy57TJk=
+  dependencies:
+    "@sentry/hub" "5.1.2"
+    "@sentry/minimal" "5.1.2"
+    "@sentry/types" "5.1.0"
+    "@sentry/utils" "5.1.2"
+    tslib "^1.9.3"
+
+"@sentry/hub@5.1.2":
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/@sentry/hub/download/@sentry/hub-5.1.2.tgz#ffdb47cd35fbf8ace66d5c251754bea8ee5f901d"
+  integrity sha1-/9tHzTX7+KzmbVwlF1S+qO5fkB0=
+  dependencies:
+    "@sentry/types" "5.1.0"
+    "@sentry/utils" "5.1.2"
+    tslib "^1.9.3"
+
+"@sentry/minimal@5.1.2":
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/@sentry/minimal/download/@sentry/minimal-5.1.2.tgz#b2bf9c864f65f8c93fc7203e41e19208ce065411"
+  integrity sha1-sr+chk9l+Mk/xyA+QeGSCM4GVBE=
+  dependencies:
+    "@sentry/hub" "5.1.2"
+    "@sentry/types" "5.1.0"
+    tslib "^1.9.3"
+
+"@sentry/node@^5.1.2":
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/@sentry/node/download/@sentry/node-5.1.2.tgz#e79bf297f9fe61ddb74c0b61a3d60b116765f3a7"
+  integrity sha1-55vyl/n+Yd23TAtho9YLEWdl86c=
+  dependencies:
+    "@sentry/core" "5.1.2"
+    "@sentry/hub" "5.1.2"
+    "@sentry/types" "5.1.0"
+    "@sentry/utils" "5.1.2"
+    cookie "0.3.1"
+    https-proxy-agent "2.2.1"
+    lru_map "0.3.3"
+    tslib "^1.9.3"
+
+"@sentry/types@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npm.taobao.org/@sentry/types/download/@sentry/types-5.1.0.tgz#2acda336c73c996b42ca03887679599c78751f10"
+  integrity sha1-Ks2jNsc8mWtCygOIdnlZnHh1HxA=
+
+"@sentry/utils@5.1.2":
+  version "5.1.2"
+  resolved "https://registry.npm.taobao.org/@sentry/utils/download/@sentry/utils-5.1.2.tgz#f2b0ba7b97d01baafc705eed8f2b31005cb01e36"
+  integrity sha1-8rC6e5fQG6r8cF7tjysxAFywHjY=
+  dependencies:
+    "@sentry/types" "5.1.0"
+    tslib "^1.9.3"
+
 "@types/babel__core@^7.1.0":
   version "7.1.0"
   resolved "http://registry.npm.taobao.org/@types/babel__core/download/@types/babel__core-7.1.0.tgz#710f2487dda4dcfd010ca6abb2b4dc7394365c51"
@@ -644,6 +700,13 @@ adler-32@~1.2.0:
   dependencies:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
+
+agent-base@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.npm.taobao.org/agent-base/download/agent-base-4.2.1.tgz#d89e5999f797875674c07d87f260fc41e83e8ca9"
+  integrity sha1-2J5ZmfeXh1Z0wH2H8mD8Qeg+jKk=
+  dependencies:
+    es6-promisify "^5.0.0"
 
 ajv@^6.5.5:
   version "6.10.0"
@@ -1783,6 +1846,18 @@ es6-iterator@^2.0.1, es6-iterator@^2.0.3, es6-iterator@~2.0.3:
     es5-ext "^0.10.35"
     es6-symbol "^3.1.1"
 
+es6-promise@^4.0.3:
+  version "4.2.6"
+  resolved "https://registry.npm.taobao.org/es6-promise/download/es6-promise-4.2.6.tgz#b685edd8258886365ea62b57d30de28fadcd974f"
+  integrity sha1-toXt2CWIhjZepitX0w3ij63Nl08=
+
+es6-promisify@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/es6-promisify/download/es6-promisify-5.0.0.tgz#5109d62f3e56ea967c4b63505aef08291c8a5203"
+  integrity sha1-UQnWLz5W6pZ8S2NQWu8IKRyKUgM=
+  dependencies:
+    es6-promise "^4.0.3"
+
 es6-symbol@^3.1.1, es6-symbol@~3.1.1:
   version "3.1.1"
   resolved "http://registry.npm.taobao.org/es6-symbol/download/es6-symbol-3.1.1.tgz#bf00ef4fdab6ba1b46ecb7b629b4c7ed5715cc77"
@@ -2400,6 +2475,14 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+https-proxy-agent@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/https-proxy-agent/download/https-proxy-agent-2.2.1.tgz#51552970fa04d723e04c56d04178c3f92592bbc0"
+  integrity sha1-UVUpcPoE1yPgTFbQQXjD+SWSu8A=
+  dependencies:
+    agent-base "^4.1.0"
+    debug "^3.1.0"
 
 iconv-lite@0.4.23:
   version "0.4.23"
@@ -3529,6 +3612,11 @@ lru-queue@0.1:
   integrity sha1-Jzi9nw089PhEkMVzbEhpmsYyzaM=
   dependencies:
     es5-ext "~0.10.2"
+
+lru_map@0.3.3:
+  version "0.3.3"
+  resolved "https://registry.npm.taobao.org/lru_map/download/lru_map-0.3.3.tgz#b5c8351b9464cbd750335a79650a0ec0e56118dd"
+  integrity sha1-tcg1G5Rky9dQM1p5ZQoOwOVhGN0=
 
 make-dir@^1.0.0, make-dir@^1.3.0:
   version "1.3.0"
@@ -5386,7 +5474,7 @@ tsconfig-paths@3.8.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "http://registry.npm.taobao.org/tslib/download/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha1-1+TdeSRdhUKMTX5IIqeZF5VMooY=

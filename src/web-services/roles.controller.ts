@@ -6,6 +6,7 @@ import { UsersServiceAuthPoints } from '../auth-points/auth-points.enum';
 import { DynamicRolesGuard } from '../auth/dynamic-roles.guard';
 import { RolesService } from '../roles/roles.service';
 import { RolesApiService } from './roles-api.service';
+import { UpsertRoleDto } from './upsert-role.dto';
 
 @Controller('roles')
 @ApiUseTags('Roles')
@@ -20,7 +21,12 @@ export class RolesController {
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async find() {
-        const result = await this.rolesService.findAndCount();
+        const result = await this.rolesService.findAndCount({
+            where: {
+                shownInApp: true,
+            },
+            select: ['id', 'name', 'createdAt', 'updatedAt'],
+        });
         return { data: result[0], count: result[1] };
     }
 
@@ -45,8 +51,8 @@ export class RolesController {
     @AuthPointName(UsersServiceAuthPoints.FIND_ROLES)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
-    async update(@Param('id') id: number, @Body('name') name: string) {
-        return this.rolesService.update(id, name);
+    async update(@Param('id') id: number, @Body() data: UpsertRoleDto) {
+        return this.rolesService.update(id, data.name);
     }
 
     @Put(':id/auth-points')

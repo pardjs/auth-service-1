@@ -28,11 +28,18 @@ export class RolesService {
     } });
   }
 
-  async update(id: number, name: string) {
-    await this.repository.update({ id }, { name });
-    return this.findById(id);
+  async update(id: number, name: string, isDefault?: boolean, shownInApp?: boolean) {
+    const role = await this.findById(id);
+    role.name = name;
+    if (isDefault !== undefined) {
+      role.isDefault = isDefault;
+    }
+    if (shownInApp !== undefined) {
+      role.shownInApp = shownInApp;
+    }
+    return this.repository.save(role);
   }
-  create(name: string) {
+  create(name: string, isDefault: boolean = false, shownInApp: boolean = true) {
     const newRole = this.repository.create({name});
     return this.repository.save(newRole);
   }

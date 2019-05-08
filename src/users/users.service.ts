@@ -4,6 +4,7 @@ import { superMd5 } from '@pardjs/common';
 import { logger } from '@pardjs/common';
 import {CreateUserDto, RoleResponseDto, UpdateUserDto, UserResponse} from '@pardjs/users-service-common';
 import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
+import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../constants';
 import {
   IP_WHITE_LIST_USER_NAME,
   PASSWORD_HASH_KEY,
@@ -21,18 +22,32 @@ export class UsersService {
     private readonly usersRepository: Repository<User>,
   ) {
     (async () => {
-      const userCount = await this.count();
+      const userCount = await this.count({
+        where: {
+          id: ADMIN_USER_ID,
+        },
+      });
       if (userCount === 0) {
         // Can access any auth point
         await this.create({
+          id: ADMIN_USER_ID,
           username: 'admin',
           password: SUPER_ADMIN_INITIAL_PASSWORD,
           name: '超级管理员',
           shownInApp: false,
         });
+      }
+
+      const userWhiteCount = await this.count({
+        where: {
+          id: IP_WHITE_LIST_USER_ID,
+        },
+      });
+      if (userWhiteCount === 0) {
         // Can access any point by default, but can be configured.
         // TODO: make white list user can be configured.
         await this.create({
+          id: IP_WHITE_LIST_USER_ID,
           username: IP_WHITE_LIST_USER_NAME,
           password: 'n/a',
           name: IP_WHITE_LIST_USER_NAME,

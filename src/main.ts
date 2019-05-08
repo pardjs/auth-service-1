@@ -1,6 +1,15 @@
 import { config } from 'dotenv';
 config();
 
+import * as Sentry from '@sentry/node';
+
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    serverName: 'pardjs-users-service',
+  });
+}
+
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import {

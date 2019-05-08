@@ -15,7 +15,7 @@ import {
   LOGIN_SESSION_LIFE_SECONDS,
   PASSWORD_HASH_KEY,
 } from '../constants';
-import { UserErrors } from '../users/errors';
+import { Errors } from '../errors';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
 import { LoginSession } from './login-session.entity';
@@ -53,7 +53,7 @@ export class LoginSessionsService {
       return;
     }
     if (spanHours(session.updatedAt) > LOGIN_SESSION_LIFE_HOURS) {
-      throw new ForbiddenException(UserErrors.LOGIN_SESSION_TIMEOUT);
+      throw new ForbiddenException(Errors.LOGIN_SESSION_TIMEOUT);
     }
     const userId = session.userId;
     return this.usersService.findById(userId);
@@ -65,7 +65,7 @@ export class LoginSessionsService {
       password: superMd5(data.password, PASSWORD_HASH_KEY),
     });
     if (!user) {
-      throw new BadRequestException(UserErrors.INVALID_LOGIN_ID_OR_PASSWORD);
+      throw new BadRequestException(Errors.INVALID_LOGIN_ID_OR_PASSWORD);
     }
     return await this.generateLoginResponse(user);
   }
@@ -75,7 +75,7 @@ export class LoginSessionsService {
       id: IP_WHITE_LIST_USER_ID,
     });
     if (!user) {
-      throw new BadRequestException(UserErrors.INVALID_LOGIN_ID_OR_PASSWORD);
+      throw new BadRequestException(Errors.INVALID_LOGIN_ID_OR_PASSWORD);
     }
     const res = await this.generateLoginResponse(user);
     logger.info('loginByIp', res);

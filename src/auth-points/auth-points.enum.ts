@@ -13,8 +13,13 @@ export enum UsersServiceAuthPoints {
   FIND_ONE_USER = 'USERS_SERVICE-FIND_ONE_USER',
   MGR_SET_USER_PASSWORD = 'USERS_SERVICE-MGR_SET_USER_PASSWORD',
   MGR_FIND_USERS = 'USERS_SERVICE-MGR_FIND_USERS',
-  MGR_CREATE_USER = 'MGR_CREATE_USER',
-  MGR_UPDATE_USER = 'MGR_UPDATE_USER',
+  MGR_CREATE_USER = 'USERS_SERVICE-MGR_CREATE_USER',
+  MGR_UPDATE_USER = 'USERS_SERVICE-MGR_UPDATE_USER',
+  MGR_FIND_ONE_USER = 'USERS_SERVICE-MGR_FIND_ONE_USER',
+  MGR_FIND_ROLES = 'USERS_SERVICE-MGR_FIND_ROLES',
+  MGR_FIND_ONE_ROLE = 'USERS_SERVICE-MGR_FIND_ONE_ROLE',
+  MGR_SET_USER_ROLES = 'USERS_SERVICE-MGR_SET_USER_ROLES',
+  MGR_SET_ROLE_AUTH_POINTS = 'USERS_SERVICE-MGR_SET_ROLE_AUTH_POINTS',
 }
 
 export const UsersServiceAuthPointNames = {
@@ -32,4 +37,13 @@ export const UsersServiceAuthPointNames = {
   [UsersServiceAuthPoints.CREATE_USER]: 'create user',
   [UsersServiceAuthPoints.FIND_ROLE]: 'find role by id',
   [UsersServiceAuthPoints.FIND_ONE_USER]: 'find user by id',
+  [UsersServiceAuthPoints.MGR_CREATE_USER]: 'create user for management',
+  [UsersServiceAuthPoints.MGR_FIND_USERS]: 'find all users for management',
+  [UsersServiceAuthPoints.MGR_SET_USER_PASSWORD]: 'set user password in management',
+  [UsersServiceAuthPoints.MGR_UPDATE_USER]: 'update user for management',
+  [UsersServiceAuthPoints.MGR_FIND_ONE_USER]: 'find one user for management',
+  [UsersServiceAuthPoints.MGR_FIND_ONE_ROLE]: 'find one role for management',
+  [UsersServiceAuthPoints.MGR_FIND_ROLES]: 'find all users for management',
+  [UsersServiceAuthPoints.MGR_SET_USER_ROLES]: 'set user roles for management',
+  [UsersServiceAuthPoints.MGR_SET_ROLE_AUTH_POINTS]: 'set role auth points for management',
 };
