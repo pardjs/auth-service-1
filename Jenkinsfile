@@ -30,7 +30,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.cn-shanghai.aliyuncs.com', 'do021-docker') {
+        docker.withRegistry('https://registry.cn-shanghai.aliyuncs.com', 'docker-do021') {
             app.push(dockerImageTag)
             app.push("latest")
         }
