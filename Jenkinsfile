@@ -1,12 +1,15 @@
 node {
     def app
-    def projectInfo = readJson file: './project-info.json'
-    def dockerImageTag = projectInfo['dockerImageTag']
+    def projectInfo
+    def dockerImageTag
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
+        projectInfo = readJSON file: './project-info.json'
+        dockerImageTag = projectInfo['dockerImageTag']
+        echo 'Docker image tag: ' + dockerImageTag
     }
 
     stage('Build image') {
