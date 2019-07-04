@@ -1,6 +1,6 @@
 {
   "name": "@pardjs/users-service-sdk",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",
   "scripts": {
