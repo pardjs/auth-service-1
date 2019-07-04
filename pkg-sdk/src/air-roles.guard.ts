@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { fromAnywhere, logger } from '@pardjs/common';
 import { AuthPointNameKey } from '@pardjs/users-service-common';
-import { UserResponse } from '@pardjs/users-service-common';
+import { PARDJS_USERS_SERVICE_BASE_URL } from './constants';
 import { PardjsUsersService } from './service';
 
 const childLogger = logger.child({ service: 'dynamic-roles-guard' });
@@ -9,11 +9,15 @@ const childLogger = logger.child({ service: 'dynamic-roles-guard' });
 @Injectable()
 export class AirRolesGuard implements CanActivate {
   constructor(private service: PardjsUsersService) {
-    if (!this.service) {
+    if (!this.service && PARDJS_USERS_SERVICE_BASE_URL) {
       this.service = new PardjsUsersService();
     }
   }
   public async canActivate(context: ExecutionContext): Promise<boolean> {
+    if (!PARDJS_USERS_SERVICE_BASE_URL) {
+      childLogger.error('no users-service connected, reject by default.');
+      return false;
+    }
     const request = context.switchToHttp().getRequest();
     if (!request.headers) {
       request.headers = {};

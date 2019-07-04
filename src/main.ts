@@ -6,7 +6,7 @@ import * as Sentry from '@sentry/node';
 if (process.env.SENTRY_DSN) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
-    serverName: 'pardjs-users-service',
+    serverName: process.env.SERVICE_NAME || 'pardjs-users-service',
   });
 }
 
