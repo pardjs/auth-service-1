@@ -34,7 +34,7 @@
     "@pardjs/users-service-common": "^0.1.0",
     "@sentry/node": "^5.1.2",
     "cookie-parser": "^1.4.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "pg": "^7.9.0",
