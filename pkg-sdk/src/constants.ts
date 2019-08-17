@@ -1,3 +1,2 @@
-import { checkEnv } from '@pardjs/common';
-
 export const PARDJS_USERS_SERVICE_BASE_URL = process.env.PARDJS_USERS_SERVICE_BASE_URL;
+export const GREEN_LIGHT_WITHOUT_USER_SERVICE = process.env.GREEN_LIGHT_WITHOUT_USER_SERVICE === 'true' || false;
