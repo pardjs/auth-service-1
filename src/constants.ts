@@ -25,4 +25,6 @@ export const IP_WHITE_LIST_USER_NAME = process.env.IP_WHITE_LIST_USERNAME;
 export const ADMIN_USER_ID = 1;
 export const IP_WHITE_LIST_USER_ID = 2;
 export const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
+export const GRPC_PORT = process.env.GRPC_PORT ? parseInt(process.env.GRPC_PORT, 10) : 6000;
 export const SERVICE_BASE = process.env.SERVICE_BASE || '';
+export const API_PREFIX = process.env.API_PREFIX || '';

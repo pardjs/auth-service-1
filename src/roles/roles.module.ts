@@ -4,7 +4,7 @@ import { Role } from './role.entity';
 import { RolesService } from './roles.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Role])],
+  imports: [TypeOrmModule.forFeature([Role], 'restful-api')],
   providers: [RolesService],
   exports: [RolesService],
 })

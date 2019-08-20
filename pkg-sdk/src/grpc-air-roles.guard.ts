@@ -1,18 +1,22 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, OnModuleInit } from '@nestjs/common';
+import { Client, ClientGrpc } from '@nestjs/microservices';
 import { fromAnywhere, logger } from '@pardjs/common';
 import { AuthPointNameKey } from '@pardjs/users-service-common';
+import { GrpcAuthService } from '../../pkg-common/src/interfaces/grpc-auth-service.interface'
 import { GREEN_LIGHT_WITHOUT_USER_SERVICE, PARDJS_USERS_SERVICE_BASE_URL } from './constants';
-import { PardjsUsersService } from './service';
+import { grpcClientOptions } from './grpc-client.options';
 
 const childLogger = logger.child({ service: 'dynamic-roles-guard' });
 
 @Injectable()
-export class AirRolesGuard implements CanActivate {
-  constructor(private service: PardjsUsersService) {
-    if (!this.service && PARDJS_USERS_SERVICE_BASE_URL) {
-      this.service = new PardjsUsersService();
-    }
+export class GrpcAirRolesGuard implements CanActivate, OnModuleInit {
+  @Client(grpcClientOptions)
+  private readonly client!: ClientGrpc;
+  private service!: GrpcAuthService;
+  onModuleInit() {
+    this.service = this.client.getService<GrpcAuthService>('AuthService');
   }
+
   public async canActivate(context: ExecutionContext): Promise<boolean> {
     if (!PARDJS_USERS_SERVICE_BASE_URL) {
       if (GREEN_LIGHT_WITHOUT_USER_SERVICE) {
@@ -32,10 +36,7 @@ export class AirRolesGuard implements CanActivate {
       context.getHandler(),
     ) as string;
     logger.info('authPointName', { authPointName });
-    const user = await this.service.canAccess(
-      token,
-      authPointName,
-    );
+    const user = await this.service.canAccess({token, authPointName}).toPromise();
     request.user = user;
     return true;
   }

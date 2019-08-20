@@ -8,7 +8,7 @@ import { LoginSessionsService } from './login-sessions.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([LoginSession]),
+    TypeOrmModule.forFeature([LoginSession], 'restful-api'),
     JwtModule.register({
       secretOrPrivateKey: JWT_SECRET,
       signOptions: {

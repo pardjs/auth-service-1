@@ -1,8 +1,12 @@
 syntax = "proto3";
-package userService;
+package authService;
 
-service UserService {
+service AuthService {
   rpc canAccess(CanAccessRequest) returns (UserResponse) {}
+}
+
+service HeroService {
+  rpc findOne (HeroById) returns (Hero) {}
 }
 
 message CanAccessRequest {
@@ -15,11 +19,20 @@ message UserResponse {
   string username = 2;
   string name = 3;
   repeated RoleResponse roles = 4;
-  string createdAt = 5; // json string
+  string createdAt = 5;
   string updatedAt = 6;
 }
 
 message RoleResponse {
+  int32 id = 1;
+  string name = 2;
+}
+
+message HeroById {
+  int32 id = 1;
+}
+
+message Hero {
   int32 id = 1;
   string name = 2;
 }

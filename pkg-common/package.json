@@ -1,5 +1,5 @@
 {
-  "name": "@pardjs/users-service-common",
+  "name": "@pardjs/auth-service-common",
   "version": "0.1.0",
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",

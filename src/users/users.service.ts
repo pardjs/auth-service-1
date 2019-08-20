@@ -1,8 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { superMd5 } from '@pardjs/common';
-import { logger } from '@pardjs/common';
-import {CreateUserDto, RoleResponseDto, UpdateUserDto, UserResponse} from '@pardjs/users-service-common';
+import { logger, superMd5 } from '@pardjs/common';
+import { UpdateUserDto } from '@pardjs/users-service-common';
 import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../constants';
 import {

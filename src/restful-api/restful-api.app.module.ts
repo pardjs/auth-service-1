@@ -3,13 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { logger } from '@pardjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { WebServicesModule } from './web-services/web-services.module';
+import { WebServicesModule } from './web-services.module';
 
 // tslint:disable-next-line: no-var-requires
-const ormConfig = require('../ormconfig');
+const ormConfig = require('../../ormconfig');
 logger.info('ormconfig', {ormConfig});
 @Module({
-  imports: [TypeOrmModule.forRoot({...ormConfig, migrations: []}), WebServicesModule],
+  imports: [TypeOrmModule.forRoot({...ormConfig, migrations: [], name: 'restful-api'}), WebServicesModule],
   controllers: [AppController],
   providers: [AppService],
 })
