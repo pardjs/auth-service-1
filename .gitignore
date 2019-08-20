@@ -3,3 +3,4 @@ logs
 nodemon-debug.json
 db-data
 dist
+.env

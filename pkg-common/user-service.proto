@@ -1,0 +1,25 @@
+syntax = "proto3";
+package userService;
+
+service UserService {
+  rpc canAccess(CanAccessRequest) returns (UserResponse) {}
+}
+
+message CanAccessRequest {
+  string token = 1;
+  string authPointName = 2;
+}
+
+message UserResponse {
+  int32 id=1;
+  string username = 2;
+  string name = 3;
+  repeated RoleResponse roles = 4;
+  string createdAt = 5; // json string
+  string updatedAt = 6;
+}
+
+message RoleResponse {
+  int32 id = 1;
+  string name = 2;
+}
