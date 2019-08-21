@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import * as request from 'supertest';
-import { AppModule } from '../src/restful-api/restful-api.app.module';
+import { AppModule } from '../src/API/restful/restful-api.app.module';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;

@@ -28,3 +28,4 @@ export const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
 export const GRPC_PORT = process.env.GRPC_PORT ? parseInt(process.env.GRPC_PORT, 10) : 6000;
 export const SERVICE_BASE = process.env.SERVICE_BASE || '';
 export const API_PREFIX = process.env.API_PREFIX || '';
+export const API_TYPE = process.env.API_TYPE || 'restful';

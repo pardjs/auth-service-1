@@ -9,17 +9,20 @@
 | `PORT` | the port of restful APIs | `5000` | `5000` |
 | `GRPC_PORT` | the port of restful APIs | `6000` | `6000` |
 | `SUPER_ADMIN_INITIAL_PASSWORD` | the initial password of super admin | `'sup5r.3om'` | `NONE` |
+| `API_TYPE` | the type of api this service provides, only one type of service can be provided at one run. `restful` or `grpc` | `restful` | `restful` |
 
 ## File structure
 
 - Main
-  - `src/restful-api` All the restful apis provided by `Pardjs Auth Service`
-  - `src/grpc-api` All the grpc apis provided by `Pardjs Auth Service`
-  - DAO layer and Business Logic layer.
-    - `src/auth`
-    - `src/auth-points`
-    - `src/login-session`
-    - `src/roles`
+  - `src/API/restful` All the restful apis provided by `Pardjs Auth Service`
+  - `src/API/grpc` All the grpc apis provided by `Pardjs Auth Service`
+  - DAO layer and Business Logic layer(BLL).
+    - `src/BLL/auth`
+    - `src/BLL/auth-points`
+    - `src/BLL/login-session`
+    - `src/BLL/roles`
+  - `API/*` depend on `BLL/*`
+  - `DAO` layer is powered by typeorm and embedded into `BLL`
 - NPM
   - `pkg-common` a npm package used by both server side and client side.
   - `pkg-sdk` a npm package used by `other pardjs services` to integrate with `Pardjs Auth Service`

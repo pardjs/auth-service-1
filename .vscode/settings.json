@@ -30,6 +30,7 @@
     "precommit",
     "preinstall",
     "prestart",
+    "proto",
     "repo",
     "sourcemap",
     "transpiled",

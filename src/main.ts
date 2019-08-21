@@ -9,11 +9,16 @@ if (process.env.SENTRY_DSN) {
   });
 }
 
-import { bootGrpcApi } from './grpc-api/grpc-api.app';
-import { bootRestfulApiApp } from './restful-api/restful-api.app';
+import { bootGrpcApi } from './API/grpc/grpc-api.app';
+import { bootRestfulApiApp } from './API/restful/restful-api.app';
+import { API_TYPE } from './constants';
 
 async function bootstrap() {
-  await bootRestfulApiApp();
-  await bootGrpcApi();
+  if (API_TYPE === 'restful') {
+    await bootRestfulApiApp();
+  }
+  if (API_TYPE === 'grpc') {
+    await bootGrpcApi();
+  }
 }
 bootstrap();
