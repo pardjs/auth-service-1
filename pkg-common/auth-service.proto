@@ -9,6 +9,11 @@ service HeroService {
   rpc findOne (HeroById) returns (Hero) {}
 }
 
+message PardGrpcError {
+  string message = 1;
+  string code = 2;
+}
+
 message CanAccessRequest {
   string token = 1;
   string authPointName = 2;
@@ -21,6 +26,7 @@ message UserResponse {
   repeated RoleResponse roles = 4;
   string createdAt = 5;
   string updatedAt = 6;
+  PardGrpcError error = 7;
 }
 
 message RoleResponse {

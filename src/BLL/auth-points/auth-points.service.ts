@@ -1,16 +1,17 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { logger } from '@pardjs/common';
 import { RegisterAuthPointsDto } from '@pardjs/users-service-common';
 import * as _ from 'lodash';
 import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
+import { BllError } from '../bll-error';
 import { Role } from '../roles/role.entity';
 import { AuthPoint } from './auth-point.entity';
 import {
   UsersServiceAuthPointNames,
   UsersServiceAuthPoints,
 } from './auth-points.enum';
-import { AuthPointsErrors } from './errors';
+import { AuthPointErrorKeys, AuthPointsErrors } from './errors';
 
 @Injectable()
 export class AuthPointsService {
@@ -59,7 +60,11 @@ export class AuthPointsService {
       },
     });
     if (!authPoint) {
-      throw new UnauthorizedException(AuthPointsErrors.AUTH_POINT_NOT_FOUND);
+      return new BllError(
+        AuthPointErrorKeys.AUTH_POINT_NOT_FOUND,
+        AuthPointsErrors,
+        HttpStatus.UNAUTHORIZED,
+      );
     }
     const authPointRoleIds = authPoint.roles.map(role => role.id);
     const userRoleIds = userRoles.map(role => role.id);
@@ -68,7 +73,11 @@ export class AuthPointsService {
     if (intersection.length > 0) {
       return true;
     } else {
-      throw new UnauthorizedException(AuthPointsErrors.NO_ACCESS_GRANTED);
+      return new BllError(
+        AuthPointErrorKeys.NO_ACCESS_GRANTED,
+        AuthPointsErrors,
+        HttpStatus.UNAUTHORIZED,
+      );
     }
   }
 

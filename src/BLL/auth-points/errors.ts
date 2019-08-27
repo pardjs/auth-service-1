@@ -14,3 +14,8 @@ export const AuthPointsErrors = {
     },
   },
 };
+
+export enum AuthPointErrorKeys {
+  AUTH_POINT_NOT_FOUND = 'AUTH_POINT_NOT_FOUND',
+  NO_ACCESS_GRANTED = 'NO_ACCESS_GRANTED',
+}

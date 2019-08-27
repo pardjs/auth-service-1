@@ -12,10 +12,11 @@ describe('AppController', () => {
     }).compile();
   });
 
-  describe('getHello', () => {
+  describe('getInfo', () => {
     it('should return "Hello World!"', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getHello()).toBe('Hello World!');
+      const infoStr: any = appController.getHello();
+      expect(infoStr.projectName).toBe('pardjs auth service');
     });
   });
 });

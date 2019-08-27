@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { logger, superMd5 } from '@pardjs/common';
 import { UpdateUserDto } from '@pardjs/users-service-common';
 import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
+import { User } from '../../BLL/users/user.entity';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';
 import {
   IP_WHITE_LIST_USER_NAME,
@@ -10,7 +11,6 @@ import {
   SUPER_ADMIN_INITIAL_PASSWORD,
 } from '../../constants';
 import { Errors } from '../../errors';
-import { User } from '../../BLL/users/user.entity';
 
 const childLogger = logger.child({ service: 'users' });
 

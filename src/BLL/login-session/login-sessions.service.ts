@@ -16,6 +16,7 @@ import {
   PASSWORD_HASH_KEY,
 } from '../../constants';
 import { Errors } from '../../errors';
+import { BllError } from '../bll-error';
 import { User } from '../users/user.entity';
 import { UsersService } from '../users/users.service';
 import { LoginSession } from './login-session.entity';
@@ -28,6 +29,21 @@ export class LoginSessionsService {
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
   ) {}
+
+  decodeToken(token: string): JwtPayload | BllError {
+    try {
+      return this.jwtService.verify(token);
+    } catch (err) {
+      // TODO: this error should in @pardjs/common
+      return new BllError('JWT_DECODE_ERROR', { JWT_DECODE_ERROR: {
+        type: 'JWT_DECODE_ERROR',
+        message: {
+          zh_CN: '解析JWT失败',
+          en_US: 'decode jwt failed',
+        },
+      }});
+    }
+  }
 
   genToken(loginSessionId: number): string {
     // In the real-world app you shouldn't expose this method publicly

@@ -4,6 +4,7 @@ import { AuthPointNameKey } from '@pardjs/users-service-common';
 import { AuthPointsService } from '../auth-points/auth-points.service';
 
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';
+import { BllError } from '../bll-error';
 import { User } from '../users/user.entity';
 
 const childLogger = logger.child({ service: 'dynamic-roles-guard' });
@@ -38,6 +39,9 @@ export class DynamicRolesGuard implements CanActivate {
       authPointName,
       user.roles,
     );
-    return canAccess;
+    if (canAccess && BllError.isBllError(canAccess)) {
+      logger.error('error occurred in DynamicRolesGuard', {bllError: canAccess});
+    }
+    return canAccess as boolean;
   }
 }
