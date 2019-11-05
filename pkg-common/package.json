@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/pardjs/users-service.git"
+    "url": "git+ssh://git@github.com/pardjs/auth-service.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pardjs/users-service/issues"
+    "url": "https://github.com/pardjs/auth-service/issues"
   },
-  "homepage": "https://github.com/pardjs/users-service#readme",
+  "homepage": "https://github.com/pardjs/auth-service#readme",
   "dependencies": {
     "@nestjs/common": "^6.1.0"
   },

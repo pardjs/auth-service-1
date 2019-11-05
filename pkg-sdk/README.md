@@ -1,3 +1,3 @@
-# @pardjs/users-service client sdk
+# @pardjs/auth-service client sdk
 
-A npm used for integrating the @pardjs/users-service properly.
+A npm used for integrating the @pardjs/auth-service properly.

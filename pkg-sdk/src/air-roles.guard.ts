@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { fromAnywhere, logger } from '@pardjs/common';
-import { AuthPointNameKey } from '@pardjs/users-service-common';
+import { AuthPointNameKey } from '@pardjs/auth-service-common';
 import { GREEN_LIGHT_WITHOUT_USER_SERVICE, PARDJS_USERS_SERVICE_BASE_URL } from './constants';
 import { PardjsUsersService } from './service';
 
@@ -18,7 +18,7 @@ export class AirRolesGuard implements CanActivate {
       if (GREEN_LIGHT_WITHOUT_USER_SERVICE) {
         return true;
       } else {
-        childLogger.error('no users-service connected, reject by default.');
+        childLogger.error('no auth-service connected, reject by default.');
         return false;
       }
     }

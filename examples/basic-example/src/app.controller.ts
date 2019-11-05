@@ -1,6 +1,6 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
-import { AuthPointName } from '@pardjs/users-service-common';
-import { AirRolesGuard } from '@pardjs/users-service-sdk';
+import { AuthPointName } from '@pardjs/auth-service-common';
+import { AirRolesGuard } from '@pardjs/auth-service-sdk';
 import { AppService } from './app.service';
 
 @Controller()

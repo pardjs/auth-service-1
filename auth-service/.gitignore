@@ -1,0 +1,6 @@
+node_modules
+logs
+nodemon-debug.json
+db-data
+dist
+.env

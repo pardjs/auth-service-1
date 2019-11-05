@@ -1,3 +1,3 @@
 # Examples
 
-examples on how to integrate @pardjs/users-service
+examples on how to integrate @pardjs/auth-service

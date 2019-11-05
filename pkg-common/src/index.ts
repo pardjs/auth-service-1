@@ -1,4 +1,4 @@
-export const NPM_NAME = '@pardjs/users-service-common';
+export const NPM_NAME = '@pardjs/auth-service-common';
 export * from './auth-point-dto';
 export * from './login-dto';
 export * from './role-dto';

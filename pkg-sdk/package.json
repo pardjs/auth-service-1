@@ -1,5 +1,5 @@
 {
-  "name": "@pardjs/users-service-sdk",
+  "name": "@pardjs/auth-service-sdk",
   "version": "0.1.15",
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",
@@ -10,18 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/pardjs/users-service.git"
+    "url": "git+ssh://git@github.com/pardjs/auth-service.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pardjs/users-service/issues"
+    "url": "https://github.com/pardjs/auth-service/issues"
   },
-  "homepage": "https://github.com/pardjs/users-service#readme",
+  "homepage": "https://github.com/pardjs/auth-service#readme",
   "dependencies": {
     "@nestjs/common": "^6.1.1",
     "@pardjs/common": "^1.0.2",
-    "@pardjs/users-service-common": "0.0.3",
+    "@pardjs/auth-service-common": "0.0.3",
     "axios": "^0.18.0",
     "passport-jwt": "^4.0.0"
   },

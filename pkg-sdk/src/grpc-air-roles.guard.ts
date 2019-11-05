@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable, OnModuleInit } from '@nestjs/common';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { fromAnywhere, logger } from '@pardjs/common';
-import { AuthPointNameKey } from '@pardjs/users-service-common';
+import { AuthPointNameKey } from '@pardjs/auth-service-common';
 import { GrpcAuthService } from '../../pkg-common/src/interfaces/grpc-auth-service.interface';
 import { GREEN_LIGHT_WITHOUT_USER_SERVICE, PARDJS_USERS_SERVICE_BASE_URL } from './constants';
 import { grpcClientOptions } from './grpc-client.options';
@@ -24,7 +24,7 @@ export class GrpcAirRolesGuard implements CanActivate, OnModuleInit {
       if (GREEN_LIGHT_WITHOUT_USER_SERVICE) {
         return true;
       } else {
-        childLogger.error('no users-service connected, reject by default.');
+        childLogger.error('no auth-service connected, reject by default.');
         return false;
       }
     }
