@@ -4,8 +4,6 @@ docker
 examples
 logs
 node_modules
-pkg-common
-pkg-sdk
 pkg-types
 test
 .env

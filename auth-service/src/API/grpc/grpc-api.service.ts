@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CanAccessDto, JwtPayload, UserResponse } from '../../../../pkg-common/src';
-import { PardGrpcError } from '../../../../pkg-common/src/interfaces/pard-grpc-error.interface';
 import { AuthPointsService } from '../../BLL/auth-points/auth-points.service';
 import { BllError } from '../../BLL/bll-error';
 import { LoginSessionsService } from '../../BLL/login-session';
 import { UsersService } from '../../BLL/users';
+import { CanAccessDto, UserResponse, PardGrpcError, JwtPayload } from '@pardjs/auth-service-common';
 
 @Injectable()
 export class GrpcApiService {

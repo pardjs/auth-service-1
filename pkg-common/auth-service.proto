@@ -2,12 +2,16 @@ syntax = "proto3";
 package authService;
 
 service AuthService {
+  rpc ping(pingRequest) returns (pingReply) {}
   rpc canAccess(CanAccessRequest) returns (UserResponse) {}
 }
 
 service HeroService {
   rpc findOne (HeroById) returns (Hero) {}
 }
+
+message pingRequest {}
+message pingReply {}
 
 message PardGrpcError {
   string message = 1;

@@ -3,23 +3,23 @@ import { BadRequestException,
 import { logger } from '@pardjs/common';
 import { LoginResponse, RegisterAuthPointsDto, UserResponse } from '@pardjs/auth-service-common';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
-import { PARDJS_USERS_SERVICE_BASE_URL } from './constants';
+import { PARDJS_AUTH_SERVICE_BASE_URL } from './constants';
 
 @Injectable()
 export class PardjsUsersService {
   private httpService: AxiosInstance;
   constructor() {
     this.httpService = axios.create({
-      baseURL: PARDJS_USERS_SERVICE_BASE_URL,
+      baseURL: PARDJS_AUTH_SERVICE_BASE_URL,
     });
-    logger.info('users service base url', {PARDJS_USERS_SERVICE_BASE_URL});
+    logger.info('users service base url', {PARDJS_AUTH_SERVICE_BASE_URL});
   }
 
   private whiteListUserToken?: string;
 
   async registerAuthPoints(data: RegisterAuthPointsDto) {
     const token = await this.getWhiteListUserToken();
-    const res = await this.httpService.post('/auth-points/actions/register?access_token=' + token, data);
+    await this.httpService.post('/auth-points/actions/register?access_token=' + token, data);
     return true;
   }
 
@@ -61,7 +61,6 @@ export class PardjsUsersService {
   }
 
   private handleError(err: any, methodName?: string, url?: string) {
-    const httpError = err as AxiosError;
     logger.error('http error when checking access', {errMessage: err.message});
     if (!err.response) {
       logger.error('connection failed', {err, methodName, url});

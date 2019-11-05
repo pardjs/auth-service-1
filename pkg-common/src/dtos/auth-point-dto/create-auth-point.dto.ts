@@ -4,7 +4,7 @@ import { IsString } from 'class-validator';
 export class CreateAuthPointDto {
     @ApiModelProperty({
         type: String,
-        example: 'USERS_SERVICE-FIND_USERS',
+        example: 'AUTH_SERVICE-FIND_USERS',
     })
     @IsString()
     name: string;

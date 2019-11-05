@@ -8,7 +8,7 @@ import * as protoLoader from '@grpc/proto-loader';
 import { logger } from '@pardjs/common';
 import * as grpc from 'grpc';
 
-const PROTO_PATH = __dirname + '/../pkg-common/auth-service.proto';
+const PROTO_PATH = __dirname + '/../node_modules/@pardjs/auth-service-common/auth-service.proto';
 const packageDefinition = protoLoader.loadSync(
   PROTO_PATH,
   {
@@ -21,7 +21,7 @@ const packageDefinition = protoLoader.loadSync(
 );
 
 const authProto = grpc.loadPackageDefinition(packageDefinition).authService;
-const client = new authProto.AuthService('localhost:6000', grpc.credentials.createInsecure());
+const client = new (authProto as any).AuthService('localhost:6000', grpc.credentials.createInsecure());
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
 'eyJsb2dpblNlc3Npb25JZCI6MSwiaWF0IjoxNTY2OTAzNjEwLCJleHAiOjE1NjY5Mzk2MTB9.' +
 'RWMNam2gGDvP2ncQYHnkBo4lcKv4_zXOxRycZI2Acf4';

@@ -2,12 +2,10 @@ import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
-import { from, Observable, of } from 'rxjs';
-import { mapTo, mergeMap} from 'rxjs/operators';
-import { CanAccessDto, RegisterAuthPointsDto, UserResponse } from '../../../../pkg-common/src';
-import { GrpcAuthService } from '../../../../pkg-common/src/interfaces/grpc-auth-service.interface';
-import { PardGrpcError } from '../../../../pkg-common/src/interfaces/pard-grpc-error.interface';
+import { from, Observable } from 'rxjs';
+import { mergeMap} from 'rxjs/operators';
 import { GrpcApiService } from './grpc-api.service';
+import { GrpcAuthService, RegisterAuthPointsDto, CanAccessDto, UserResponse, PardGrpcError } from '@pardjs/auth-service-common';
 
 @Controller()
 export class AuthServiceController implements GrpcAuthService {

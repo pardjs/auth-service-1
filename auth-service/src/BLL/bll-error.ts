@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { PardGrpcError } from '../../../pkg-common/src/interfaces/pard-grpc-error.interface';
+import { PardGrpcError } from '@pardjs/auth-service-common';
 
 enum Language {
   zh_CN = 'zh_CN',

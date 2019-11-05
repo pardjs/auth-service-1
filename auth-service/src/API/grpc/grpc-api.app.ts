@@ -5,13 +5,15 @@ import { join } from 'path';
 import { GRPC_PORT } from '../../constants';
 import { AppModule } from './grpc-api.app.module';
 
+const protoPath = join(process.cwd(), 'node_modules/@pardjs/auth-service-common/auth-service.proto')
+
 export const bootGrpcApi = async () => {
   const app = await NestFactory.createMicroservice(AppModule, {
     transport: Transport.GRPC,
     options: {
       url: `0.0.0.0:${GRPC_PORT}`,
       package: 'authService',
-      protoPath: join(process.cwd(), 'pkg-common/auth-service.proto'),
+      protoPath,
     },
   });
   await app.listenAsync();
