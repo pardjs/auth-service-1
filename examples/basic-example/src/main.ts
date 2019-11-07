@@ -1,4 +1,4 @@
-process.env.PARDJS_USERS_SERVICE_BASE_URL = 'http://localhost:5000';
+process.env.PARDJS_AUTH_SERVICE_BASE_URL = 'http://localhost:5000';
 import { NestFactory } from '@nestjs/core';
 import { HttpExceptionFilter } from '@pardjs/common';
 import { AppModule } from './app.module';

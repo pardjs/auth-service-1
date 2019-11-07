@@ -1,0 +1,48 @@
+syntax = "proto3";
+package authService;
+
+service AuthService {
+  rpc ping(pingRequest) returns (pingReply) {}
+  rpc canAccess(CanAccessRequest) returns (UserResponse) {}
+}
+
+service HeroService {
+  rpc findOne (HeroById) returns (Hero) {}
+}
+
+message pingRequest {}
+message pingReply {}
+
+message PardGrpcError {
+  string message = 1;
+  string code = 2;
+}
+
+message CanAccessRequest {
+  string token = 1;
+  string authPointName = 2;
+}
+
+message UserResponse {
+  int32 id=1;
+  string username = 2;
+  string name = 3;
+  repeated RoleResponse roles = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+  PardGrpcError error = 7;
+}
+
+message RoleResponse {
+  int32 id = 1;
+  string name = 2;
+}
+
+message HeroById {
+  int32 id = 1;
+}
+
+message Hero {
+  int32 id = 1;
+  string name = 2;
+}

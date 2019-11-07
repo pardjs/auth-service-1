@@ -1,17 +1,17 @@
 version: '3.1'
 
 services:
-  pardjs-users-service:
-    container_name: pardjs-users-service
-    image: registry.cn-shanghai.aliyuncs.com/pardjs/users-service:1.2.2
+  pardjs-auth-service:
+    container_name: pardjs-auth-service
+    image: registry.cn-shanghai.aliyuncs.com/pardjs/auth-service:1.2.2
     restart: always
     environment: 
-      DB_URL: postgres://pardjs:example@db:5432/pardjs-users-service
+      DB_URL: postgres://pardjs:example@db:5432/pardjs-auth-service
     links: 
-      - pardjs-users-service-db:db
+      - pardjs-auth-service-db:db
     ports:
       - 5000:5000
     networks: 
-      - pardjs-users-service
+      - pardjs-auth-service
 networks: 
-  pardjs-users-service:
+  pardjs-auth-service:
