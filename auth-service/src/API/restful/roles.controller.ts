@@ -1,11 +1,8 @@
-import { AuthPointController } from './auth-points.controller';
 import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
-import { AuthPointName, CreateRoleDto, SetRoleAuthPointsDto } from '@pardjs/AuthPointController-service-common';
-import { UsersServiceAuthPoints } from '../../BLL/auth-points/auth-points.enum';
-import { DynamicRolesGuard } from '../../BLL/auth/dynamic-roles.guard';
-import { RolesService } from '../../BLL/roles/roles.service';
+import { AuthPointName, CreateRoleDto, SetRoleAuthPointsDto } from '@pardjs/auth-service-common';
+import { AuthPoints, DynamicRolesGuard, RolesService } from '../../BLL';
 import { RolesApiService } from './roles-api.service';
 import { UpsertRoleDto } from './upsert-role.dto';
 
@@ -18,7 +15,7 @@ export class RolesController {
     ) {}
 
     @Get('')
-    @AuthPointName(UsersServiceAuthPoints.FIND_ROLES)
+    @AuthPointName(AuthPoints.FIND_ROLES)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async find() {
@@ -32,7 +29,7 @@ export class RolesController {
     }
 
     @Get(':id')
-    @AuthPointName(UsersServiceAuthPoints.FIND_ROLE)
+    @AuthPointName(AuthPoints.FIND_ROLE)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async findById(@Param('id') id: number) {
@@ -40,7 +37,7 @@ export class RolesController {
     }
 
     @Post('')
-    @AuthPointName(UsersServiceAuthPoints.FIND_ROLES)
+    @AuthPointName(AuthPoints.FIND_ROLES)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async create(@Body() data: CreateRoleDto) {
@@ -49,7 +46,7 @@ export class RolesController {
     }
 
     @Put(':id')
-    @AuthPointName(UsersServiceAuthPoints.FIND_ROLES)
+    @AuthPointName(AuthPoints.FIND_ROLES)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async update(@Param('id') id: number, @Body() data: UpsertRoleDto) {
@@ -57,7 +54,7 @@ export class RolesController {
     }
 
     @Put(':id/auth-points')
-    @AuthPointName(UsersServiceAuthPoints.FIND_ROLES)
+    @AuthPointName(AuthPoints.FIND_ROLES)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async setRoleAuthPoints(@Param('id') id: number, @Body() data: SetRoleAuthPointsDto) {
@@ -65,7 +62,7 @@ export class RolesController {
     }
 
     @Delete(':id')
-    @AuthPointName(UsersServiceAuthPoints.FIND_ROLES)
+    @AuthPointName(AuthPoints.FIND_ROLES)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async remove(@Param('id') id: number) {

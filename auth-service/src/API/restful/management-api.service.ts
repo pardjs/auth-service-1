@@ -1,10 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { DeepPartial, In } from 'typeorm';
-import { AuthPointsService } from '../../BLL/auth-points/auth-points.service';
-import { Role } from '../../BLL/roles/role.entity';
-import { RolesService } from '../../BLL/roles/roles.service';
-import { User } from '../../BLL/users/user.entity';
-import { UsersService } from '../../BLL/users/users.service';
+import { AuthPointsService, Role, RolesService, User, UsersService } from '../../BLL';
 
 @Injectable()
 export class ManagementService {

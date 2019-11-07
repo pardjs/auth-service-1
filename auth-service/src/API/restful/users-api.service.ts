@@ -1,12 +1,8 @@
-import { AuthPointName } from '@pardjs/AuthPointController-service-common';
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { CreateUserDto, RoleResponseDto, SetUserRolesDto, UserResponse } from '@pardjs/auth-service-common';
 import { superMd5 } from '@pardjs/common';
-import { CreateUserDto, RoleResponseDto, SetUserRolesDto, UserResponse } from '@pardjs/AuthPointName-service-common';
 import { In } from 'typeorm';
-import { Role } from '../../BLL/roles/role.entity';
-import { RolesService } from '../../BLL/roles/roles.service';
-import { User } from '../../BLL/users';
-import { UsersService } from '../../BLL/users/users.service';
+import { Role, RolesService, User, UsersService } from '../../BLL';
 import { PASSWORD_HASH_KEY } from '../../constants';
 import { Errors } from '../../errors';
 import { ChangePasswordDto } from './change-password.dto';

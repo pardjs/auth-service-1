@@ -1,9 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { logger, superMd5 } from '@pardjs/common';
 import { UpdateUserDto } from '@pardjs/auth-service-common';
+import { logger, superMd5 } from '@pardjs/common';
 import { DeepPartial, FindManyOptions, Repository } from 'typeorm';
-import { User } from './user.entity';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';
 import {
   IP_WHITE_LIST_USER_NAME,
@@ -11,6 +10,7 @@ import {
   SUPER_ADMIN_INITIAL_PASSWORD,
 } from '../../constants';
 import { Errors } from '../../errors';
+import { User } from './user.entity';
 
 const childLogger = logger.child({ service: 'users' });
 
@@ -48,7 +48,7 @@ export class UsersService {
         await this.create({
           id: IP_WHITE_LIST_USER_ID,
           username: IP_WHITE_LIST_USER_NAME,
-          password: 'n/a',
+          password: SUPER_ADMIN_INITIAL_PASSWORD,
           name: IP_WHITE_LIST_USER_NAME,
           shownInApp: false,
         });

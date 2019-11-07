@@ -2,9 +2,7 @@ import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 import { AuthPointName, RegisterAuthPointsDto } from '@pardjs/auth-service-common';
-import { UsersServiceAuthPoints } from '../../BLL/auth-points/auth-points.enum';
-import { AuthPointsService } from '../../BLL/auth-points/auth-points.service';
-import { DynamicRolesGuard } from '../../BLL/auth/dynamic-roles.guard';
+import { AuthPoints, AuthPointsService, DynamicRolesGuard } from '../../BLL';
 
 @Controller('auth-points')
 @ApiUseTags('AuthPoints')
@@ -13,14 +11,14 @@ export class AuthPointController {
 
     @Post('actions/register')
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
-    @AuthPointName(UsersServiceAuthPoints.ACT_AUTH_POINT_REGISTER)
+    @AuthPointName(AuthPoints.ACT_AUTH_POINT_REGISTER)
     @ApiBearerAuth()
     async register(@Body() body: RegisterAuthPointsDto ) {
         return this.authPointService.register(body);
     }
 
     @Get('')
-    @AuthPointName(UsersServiceAuthPoints.FIND_AUTH_POINTS)
+    @AuthPointName(AuthPoints.FIND_AUTH_POINTS)
     @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
     @ApiBearerAuth()
     async find() {

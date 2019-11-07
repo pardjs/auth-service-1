@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
-import { AuthModule } from '../../BLL/auth';
-import { AuthPointsModule } from '../../BLL/auth-points';
-import { RolesModule } from '../../BLL/roles';
+import { AuthModule, AuthPointsModule, LoginSessionsModule, RolesModule,UsersModule } from '../../BLL';
 import { AuthPointController } from './auth-points.controller';
 import { LoginSessionsController } from './login-sessions.controller';
 import { ManagementService } from './management-api.service';
@@ -19,6 +17,8 @@ import { UsersController } from './users.controller';
     AuthModule,
     RolesModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
+    UsersModule,
+    LoginSessionsModule
   ],
   providers: [
     UsersApiService,

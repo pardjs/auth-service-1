@@ -30,7 +30,7 @@ export const Errors = {
   BAD_OPERATION: {
     en_US: 'BAD_OPERATION',
     zh_CN: '违法操作，请停止。',
-  }
+  },
 };
 
 export enum ErrorKeys {

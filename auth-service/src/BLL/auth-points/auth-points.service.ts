@@ -1,15 +1,15 @@
 import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { logger } from '@pardjs/common';
 import { RegisterAuthPointsDto } from '@pardjs/auth-service-common';
+import { logger } from '@pardjs/common';
 import * as _ from 'lodash';
 import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
 import { BllError } from '../bll-error';
 import { Role } from '../roles/role.entity';
 import { AuthPoint } from './auth-point.entity';
 import {
+  AuthPoints,
   UsersServiceAuthPointNames,
-  UsersServiceAuthPoints,
 } from './auth-points.enum';
 import { AuthPointErrorKeys, AuthPointsErrors } from './errors';
 
@@ -21,10 +21,10 @@ export class AuthPointsService {
   ) {
     (async () => {
       // tslint:disable-next-line:forin
-      for (const key in UsersServiceAuthPoints) {
+      for (const key in AuthPoints) {
         await this.upsertByName(
-          UsersServiceAuthPoints[key],
-          UsersServiceAuthPointNames[UsersServiceAuthPoints[key]],
+          AuthPoints[key],
+          UsersServiceAuthPointNames[AuthPoints[key]],
         );
       }
     })();
@@ -44,7 +44,7 @@ export class AuthPointsService {
         return this.repository.save(authPoint);
       }
     } else {
-      const newAuthPoint = await this.repository.create({ name, displayName });
+      const newAuthPoint = this.repository.create({ name, displayName });
       return this.repository.save(newAuthPoint);
     }
   }

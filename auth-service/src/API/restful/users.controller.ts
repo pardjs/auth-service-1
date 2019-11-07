@@ -21,13 +21,9 @@ import {
   ApiUseTags,
 } from '@nestjs/swagger';
 import { AuthPointName, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponse} from '@pardjs/auth-service-common';
-import { UsersServiceAuthPoints } from '../../BLL/auth-points/auth-points.enum';
-import { AuthPointsService } from '../../BLL/auth-points/auth-points.service';
-import { DynamicRolesGuard } from '../../BLL/auth/dynamic-roles.guard';
+import { AuthPoints, AuthPointsService, DynamicRolesGuard, User, UsersService } from '../../BLL';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';
 import { Errors } from '../../errors';
-import { User } from '../../BLL/users/user.entity';
-import { UsersService } from '../../BLL/users/users.service';
 import { ChangePasswordDto } from './change-password.dto';
 import { UsersApiService } from './users-api.service';
 
@@ -43,7 +39,7 @@ export class UsersController {
   @Post('')
   @ApiOperation({ operationId: 'create', title: 'create' })
   @ApiResponse({ status: HttpStatus.CREATED, type: UserResponse })
-  @AuthPointName(UsersServiceAuthPoints.CREATE_USER)
+  @AuthPointName(AuthPoints.CREATE_USER)
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   create(@Body() body: CreateUserDto) {
@@ -55,7 +51,7 @@ export class UsersController {
   @ApiResponse({ status: HttpStatus.OK, type: UserResponse, isArray: true })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
-  @AuthPointName(UsersServiceAuthPoints.FIND_USERS)
+  @AuthPointName(AuthPoints.FIND_USERS)
   async find(
     @Query('limit') limit: number = 10,
     @Query('offset') offset: number = 0,
@@ -97,7 +93,7 @@ export class UsersController {
 
   @Get(':id')
   @ApiBearerAuth()
-  @AuthPointName(UsersServiceAuthPoints.FIND_ONE_USER)
+  @AuthPointName(AuthPoints.FIND_ONE_USER)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   async findOne(@Param('id') id: number) {
     const found = await this.usersService.findById(id);
@@ -123,12 +119,12 @@ export class UsersController {
         throw new UnauthorizedException();
       }
     }
-    return this.userApiService.toResponse(user as User);
+    return this.userApiService.toResponse(user);
   }
 
   @Put('/:id/roles')
   @ApiBearerAuth()
-  @AuthPointName(UsersServiceAuthPoints.SET_USER_ROLES)
+  @AuthPointName(AuthPoints.SET_USER_ROLES)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   @ApiResponse({
     type: UserResponse,
@@ -142,7 +138,7 @@ export class UsersController {
   }
 
   @Put('/:id')
-  @AuthPointName(UsersServiceAuthPoints.UPDATE_USER)
+  @AuthPointName(AuthPoints.UPDATE_USER)
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   @ApiResponse({
@@ -159,7 +155,7 @@ export class UsersController {
 
   @Delete(':id')
   @ApiBearerAuth()
-  @AuthPointName(UsersServiceAuthPoints.DELETE_USER)
+  @AuthPointName(AuthPoints.DELETE_USER)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   async deleteUser(@Param('id') id: number) {
     if ([ADMIN_USER_ID, IP_WHITE_LIST_USER_ID].includes(id)) {

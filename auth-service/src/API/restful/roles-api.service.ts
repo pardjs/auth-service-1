@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { SetRoleAuthPointsDto } from '@pardjs/auth-service-common';
 import { In } from 'typeorm';
-import { AuthPoint } from '../../BLL/auth-points/auth-point.entity';
-import { AuthPointsService } from '../../BLL/auth-points/auth-points.service';
-import { RolesService } from '../../BLL/roles/roles.service';
-import { UsersService } from '../../BLL/users/users.service';
+import { AuthPoint, AuthPointsService, RolesService, UsersService } from '../../BLL';
 
 @Injectable()
 export class RolesApiService {

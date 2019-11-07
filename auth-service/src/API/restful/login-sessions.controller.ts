@@ -16,11 +16,10 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { logger, MS_ONE_SECOND } from '@pardjs/common';
 import { LoginByUsernameDto, LoginResponse } from '@pardjs/auth-service-common';
+import { logger, MS_ONE_SECOND } from '@pardjs/common';
 import { Request, Response } from 'express';
-import { LoginSessionsService } from '../../BLL/login-session';
-import { User } from '../../BLL/users';
+import { LoginSessionsService, User } from '../../BLL';
 import { IP_WHITE_LIST } from '../../constants';
 
 @Controller()

@@ -36,6 +36,7 @@
     "@sentry/node": "^5.7.1",
     "class-transformer": "^0.2.3",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
     "grpc": "^1.24.2",
     "lodash": "^4.17.15",
     "passport": "^0.4.0",
@@ -57,15 +58,15 @@
     "@types/lodash": "^4.14.123",
     "@types/node": "11.13.0",
     "@types/supertest": "2.0.7",
-    "jest": "24.7.1",
-    "nodemon": "1.18.10",
+    "jest": "24.9.0",
+    "nodemon": "1.19.4",
     "prettier": "1.16.4",
     "supertest": "4.0.2",
-    "ts-jest": "24.0.2",
+    "ts-jest": "24.1.0",
     "tsconfig-paths": "3.8.0",
-    "tslint": "5.15.0",
+    "tslint": "^6.0.0-beta0",
     "typescript": "3.4.2",
-    "yarn": "^1.15.2"
+    "yarn": "^1.19.1"
   },
   "jest": {
     "moduleFileExtensions": [
