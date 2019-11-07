@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { CreateUserDto, RoleResponseDto, SetUserRolesDto, UserResponse } from '@pardjs/auth-service-common';
+import { CreateUserDto, RoleResponseDto, SetUserRolesDto, UserResponseDto } from '@pardjs/auth-service-common';
 import { superMd5 } from '@pardjs/common';
 import { In } from 'typeorm';
 import { Role, RolesService, User, UsersService } from '../../BLL';
@@ -41,7 +41,7 @@ export class UsersApiService {
     return savedUser;
   }
 
-  async changePassword(userRes: UserResponse, data: ChangePasswordDto) {
+  async changePassword(userRes: UserResponseDto, data: ChangePasswordDto) {
     const user = await this.userService.findOne({
       username: userRes.username,
       password: superMd5(data.oldPassword, PASSWORD_HASH_KEY),
@@ -53,7 +53,7 @@ export class UsersApiService {
     return { success: true };
   }
 
-  toResponse(user: User): UserResponse {
+  toResponse(user: User): UserResponseDto {
     return {
       username: user.username,
       id: user.id,

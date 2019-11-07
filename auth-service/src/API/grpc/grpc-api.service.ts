@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CanAccessDto, JwtPayload, PardGrpcError, UserResponse } from '@pardjs/auth-service-common';
+import { CanAccessDto, JwtPayload, PardGrpcError, UserResponseDto } from '@pardjs/auth-service-common';
 import { AuthPointsService, BllError, LoginSessionsService } from '../../BLL';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class GrpcApiService {
     private readonly loginSessionService: LoginSessionsService,
   ) {}
 
-  async canAccess(data: CanAccessDto): Promise<UserResponse | { error: PardGrpcError }> {
+  async canAccess(data: CanAccessDto): Promise<UserResponseDto | { error: PardGrpcError }> {
     const { token, authPointName } = data;
     const jwtPayload = this.loginSessionService.decodeToken(token);
     if (jwtPayload && BllError.isBllError(jwtPayload)) {

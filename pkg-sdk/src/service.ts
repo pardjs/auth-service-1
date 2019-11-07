@@ -1,8 +1,8 @@
 import { BadRequestException,
   HttpStatus, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { logger } from '@pardjs/common';
-import { LoginResponse, RegisterAuthPointsDto, UserResponse } from '@pardjs/auth-service-common';
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
+import { LoginResponseDto, RegisterAuthPointsDto, UserResponseDto } from '@pardjs/auth-service-common';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { PARDJS_AUTH_SERVICE_BASE_URL } from './constants';
 
 @Injectable()
@@ -43,7 +43,7 @@ export class PardjsUsersService {
     const url = '/login-by-ip';
     try {
       // TODO: LoginResponse as the return type
-      const res = await this.httpService.post<LoginResponse>(url);
+      const res = await this.httpService.post<LoginResponseDto>(url);
       return res.data.token;
     } catch (err) {
       this.handleError(err, 'loginWhiteListUser', url);
@@ -53,7 +53,7 @@ export class PardjsUsersService {
   async canAccess(token: string, authPointName?: string) {
     const url = '/users/me/actions/check-access?access_token=' + token + '&authPointName=' + authPointName;
     try {
-      const res = await this.httpService.get<UserResponse>(url);
+      const res = await this.httpService.get<UserResponseDto>(url);
       return res.data;
     } catch (err) {
       this.handleError(err, 'canAccess', url);

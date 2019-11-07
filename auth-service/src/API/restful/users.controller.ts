@@ -20,7 +20,7 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { AuthPointName, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponse} from '@pardjs/auth-service-common';
+import { AuthPointName, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponseDto} from '@pardjs/auth-service-common';
 import { AuthPoints, AuthPointsService, DynamicRolesGuard, User, UsersService } from '../../BLL';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';
 import { Errors } from '../../errors';
@@ -38,7 +38,7 @@ export class UsersController {
 
   @Post('')
   @ApiOperation({ operationId: 'create', title: 'create' })
-  @ApiResponse({ status: HttpStatus.CREATED, type: UserResponse })
+  @ApiResponse({ status: HttpStatus.CREATED, type: UserResponseDto })
   @AuthPointName(AuthPoints.CREATE_USER)
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
@@ -48,7 +48,7 @@ export class UsersController {
 
   @Get('')
   @ApiOperation({ title: 'list' })
-  @ApiResponse({ status: HttpStatus.OK, type: UserResponse, isArray: true })
+  @ApiResponse({ status: HttpStatus.OK, type: UserResponseDto, isArray: true })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   @AuthPointName(AuthPoints.FIND_USERS)
@@ -87,7 +87,7 @@ export class UsersController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   changePassword(@Req() req: any, @Body() data: ChangePasswordDto) {
-    const user = req.user as UserResponse;
+    const user = req.user as UserResponseDto;
     return this.userApiService.changePassword(user, data);
   }
 
@@ -109,7 +109,7 @@ export class UsersController {
   @UseGuards(AuthGuard('jwt'))
   @ApiResponse({
     status: HttpStatus.OK,
-    type: UserResponse,
+    type: UserResponseDto,
   })
   async checkAccess(@Req() req: any, @Query('authPointName') authPointName: string) {
     const user = req.user as User;
@@ -127,7 +127,7 @@ export class UsersController {
   @AuthPointName(AuthPoints.SET_USER_ROLES)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   @ApiResponse({
-    type: UserResponse,
+    type: UserResponseDto,
     status: HttpStatus.OK,
   })
   setUserRoles(@Param('id') id: number, @Body() body: SetUserRolesDto) {
@@ -142,7 +142,7 @@ export class UsersController {
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   @ApiResponse({
-    type: UserResponse,
+    type: UserResponseDto,
     status: HttpStatus.OK,
   })
   async updateById(@Param('id') id: number, @Body() body: UpdateUserDto) {
