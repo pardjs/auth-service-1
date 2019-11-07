@@ -28,11 +28,13 @@
     "oneofs",
     "ormconfig",
     "pardjs",
+    "parens",
     "postgres",
     "precommit",
     "preinstall",
     "prestart",
     "proto",
+    "quotemark",
     "repo",
     "sourcemap",
     "transpiled",
@@ -47,5 +49,6 @@
   ],
   "git.ignoreLimitWarning": true,
   "editor.formatOnSave": false,
-  "tslint.ignoreDefinitionFiles": true
+  "tslint.ignoreDefinitionFiles": true,
+  "tslint.autoFixOnSave": true
 }

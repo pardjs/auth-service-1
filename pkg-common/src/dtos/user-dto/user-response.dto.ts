@@ -1,7 +1,7 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { RoleResponseDto } from '../role-dto/role-response.dto';
 
-export class UserResponse {
+export class UserResponseDto {
   @ApiModelProperty({
     type: Number,
     example: 1,
