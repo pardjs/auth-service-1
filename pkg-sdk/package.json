@@ -22,7 +22,7 @@
   "dependencies": {
     "@nestjs/common": "^6.1.1",
     "@nestjs/microservices": "^6.9.0",
-    "@pardjs/auth-service-common": "^0.1.1-rc1",
+    "@pardjs/auth-service-common": "^0.1.1-rc3",
     "@pardjs/common": "^1.0.2",
     "axios": "^0.18.0",
     "passport-jwt": "^4.0.0"

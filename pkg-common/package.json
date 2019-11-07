@@ -1,12 +1,11 @@
 {
   "name": "@pardjs/auth-service-common",
-  "version": "0.1.1-rc3",
+  "version": "0.1.1-rc4",
   "description": "A npm package that holding the logics will be used both by service and sdk.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "npm test",
-    "publish": "npm publish --access public",
     "prepublish": "npm run build"
   },
   "repository": {

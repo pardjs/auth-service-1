@@ -469,10 +469,10 @@
     consola "^2.3.0"
     node-fetch "^2.3.0"
 
-"@pardjs/auth-service-common@^0.1.1-rc1":
-  version "0.1.1-rc1"
-  resolved "https://registry.npmjs.org/@pardjs/auth-service-common/-/auth-service-common-0.1.1-rc1.tgz#b1921987ef5719d60e8c8a65da12e8c95a0fa470"
-  integrity sha512-YhwXUJ+oNSPFIpG9NymGCW+8tZ/JC0L8ciZkuVo8xxMgv/1NUeTLcf6wwr/ndj75uJsF/lWafk53YmHQqT74Nw==
+"@pardjs/auth-service-common@0.1.1-rc4":
+  version "0.1.1-rc4"
+  resolved "https://registry.npmjs.org/@pardjs/auth-service-common/-/auth-service-common-0.1.1-rc4.tgz#9f3ceb6c077b7bca5edef908b1d85f30e3153178"
+  integrity sha512-joADcj5bxwukiCkmJjEi1T8jKYz1rugJ4uUyYD9KwOaElXU5tH+S41x7DLuSaXJY6s3DBiZg9rmPydY/HYqZiQ==
   dependencies:
     "@nestjs/common" "^6.1.0"
     "@nestjs/swagger" "^3.1.0"

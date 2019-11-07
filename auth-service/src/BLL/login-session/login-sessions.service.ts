@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { JwtPayload, LoginByUsernameDto, LoginResponse } from '@pardjs/auth-service-common';
+import { JwtPayload, LoginByUsernameDto, LoginResponseDto } from '@pardjs/auth-service-common';
 import { logger, superMd5 } from '@pardjs/common';
 import { spanHours } from '@pardjs/common';
 import { Repository } from 'typeorm';
@@ -75,7 +75,7 @@ export class LoginSessionsService {
     return this.usersService.findById(userId);
   }
 
-  async loginByUsername(data: LoginByUsernameDto): Promise<LoginResponse> {
+  async loginByUsername(data: LoginByUsernameDto): Promise<LoginResponseDto> {
     const user = await this.usersService.findOne({
       username: data.username,
       password: superMd5(data.password, PASSWORD_HASH_KEY),
@@ -86,7 +86,7 @@ export class LoginSessionsService {
     return await this.generateLoginResponse(user);
   }
 
-  async loginByIp(): Promise<LoginResponse> {
+  async loginByIp(): Promise<LoginResponseDto> {
     const user = await this.usersService.findOne({
       id: IP_WHITE_LIST_USER_ID,
     });

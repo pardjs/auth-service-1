@@ -1,26 +1,23 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { CanAccessDto, GrpcAuthService, PardGrpcError, RegisterAuthPointsDto, UserResponse } from '@pardjs/auth-service-common';
+import { CanAccessDto, GrpcAuthService, PardGrpcError, RegisterAuthPointsDto, UserResponseDto } from '@pardjs/auth-service-common';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
-import { from, Observable } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { mergeMap} from 'rxjs/operators';
 import { GrpcApiService } from './grpc-api.service';
 
 @Controller()
 export class AuthServiceController implements GrpcAuthService {
   constructor(private readonly service: GrpcApiService) {}
+
+  @GrpcMethod('AuthService', 'registerAuthPoints')
   registerAuthPoints(data: RegisterAuthPointsDto): Observable<boolean> {
-    throw new Error('Method not implemented.');
+    return of(true);
   }
-  getWhiteListUserToken(): Observable<string> {
-    throw new Error('Method not implemented.');
-  }
-  loginWhiteListUser(): Observable<string> {
-    throw new Error('Method not implemented.');
-  }
+
   @GrpcMethod('AuthService', 'canAccess')
-  canAccess(data: CanAccessDto): Observable<UserResponse | {error: PardGrpcError}> {
+  canAccess(data: CanAccessDto): Observable<UserResponseDto | {error: PardGrpcError}> {
     const realData = plainToClass(CanAccessDto, data);
     return from(validate(realData)).pipe(
       mergeMap(errors => {

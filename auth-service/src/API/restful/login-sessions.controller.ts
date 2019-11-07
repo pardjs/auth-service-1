@@ -16,7 +16,7 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { LoginByUsernameDto, LoginResponse } from '@pardjs/auth-service-common';
+import { LoginByUsernameDto, LoginResponseDto } from '@pardjs/auth-service-common';
 import { logger, MS_ONE_SECOND } from '@pardjs/common';
 import { Request, Response } from 'express';
 import { LoginSessionsService, User } from '../../BLL';
@@ -29,7 +29,7 @@ export class LoginSessionsController {
   @Post('login-by-username')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ title: 'login' })
-  @ApiResponse({ status: HttpStatus.OK, type: LoginResponse })
+  @ApiResponse({ status: HttpStatus.OK, type: LoginResponseDto })
   async loginByUsername(
     @Req() req: Request,
     @Res() res: Response,
@@ -48,7 +48,7 @@ export class LoginSessionsController {
   @Post('login-by-ip')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ title: 'login' })
-  @ApiResponse({ status: HttpStatus.OK, type: LoginResponse })
+  @ApiResponse({ status: HttpStatus.OK, type: LoginResponseDto })
   async loginByIp(@Req() req: Request) {
     let ip = (req.headers['x-forwarded-for'] as string) || req.ip;
     logger.info('loginByIp', { ip });
