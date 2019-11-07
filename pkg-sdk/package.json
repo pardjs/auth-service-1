@@ -25,8 +25,10 @@
     "@pardjs/auth-service-common": "^0.1.1-rc4",
     "@pardjs/common": "^1.1.4-rc1",
     "axios": "^0.19.0",
+    "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3"
   },
   "devDependencies": {
     "@types/passport-jwt": "^3.0.1",
