@@ -3,16 +3,15 @@ import { checkEnv, SECONDS_ONE_HOUR } from '@pardjs/common';
 checkEnv(
   'SUPER_ADMIN_INITIAL_PASSWORD',
   'JWT_SECRET',
-  'LOGIN_SESSION_LIFE_HOURS',
   'PASSWORD_HASH_KEY',
   'IP_WHITE_LIST',
   'IP_WHITE_LIST_USERNAME',
 );
 
-export const LOGIN_SESSION_LIFE_HOURS = parseInt(
+export const LOGIN_SESSION_LIFE_HOURS = process.env.LOGIN_SESSION_LIFE_HOURS ? parseInt(
   process.env.LOGIN_SESSION_LIFE_HOURS,
   10,
-);
+) : 2;
 export const LOGIN_SESSION_LIFE_SECONDS =
   LOGIN_SESSION_LIFE_HOURS * SECONDS_ONE_HOUR;
 export const JWT_SECRET = process.env.JWT_SECRET;

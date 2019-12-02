@@ -4,7 +4,7 @@ config({
   path: join(__dirname, '../.env'),
 });
 
-import {UserResponse} from '@pardjs/auth-service-common'
+import { UserResponseDto } from '@pardjs/auth-service-common'
 import * as protoLoader from '@grpc/proto-loader';
 import { logger } from '@pardjs/common';
 import * as grpc from 'grpc';
@@ -32,7 +32,7 @@ describe('prepared to test grpc', () => {
     client.canAccess({
       token,
       // authPointName: 'THE_FAKE_POINT',
-    }, (err: any, response: UserResponse) => {
+    }, (err: any, response: UserResponseDto) => {
       expect(err).toBeNull();
       expect(response.name).toBe('ip_whitelist_user');
       done();
