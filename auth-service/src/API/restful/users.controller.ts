@@ -20,7 +20,7 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { AuthPointName, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponseDto} from '@pardjs/auth-service-common';
+import { AuthPointName, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponseDto, CreateAuthPointDto} from '@pardjs/auth-service-common';
 import { AuthPoints, AuthPointsService, DynamicRolesGuard, User, UsersService } from '../../BLL';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';
 import { Errors } from '../../errors';
@@ -95,6 +95,7 @@ export class UsersController {
   @ApiOperation({title: 'findCurrentUserAuthPoints'})
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
+  @ApiResponse({status: HttpStatus.OK, type: CreateAuthPointDto, isArray: true})
   findCurrentUserAuthPoints(@Req() req: any) {
     const user = req.user as UserResponseDto;
     return this.userApiService.findUserAuthPoints(user.id)
