@@ -30,6 +30,26 @@ export class UsersApiService {
     return this.toResponse(saved);
   }
 
+  async findUserAuthPoints(id: number) {
+    const user = await this.userService.findById(id)
+    const roleIds = user.roles.map(role => role.id)
+    const roles = await this.roleService.find({
+      where: {id: In(roleIds)},
+      join: {
+        alias: 'role',
+        leftJoinAndSelect: {
+          'authPoints': 'role.authPoints'
+        }
+      }
+    })
+    return Object.values(roles.reduce((prev, cur) => {
+      for(let authPoint of cur.authPoints) {
+        prev[authPoint.id.toString()] = authPoint
+      }
+      return prev
+    }, {}))
+  }
+
   // TODO: only accept the params needed.
   async create(body: CreateUserDto) {
     let savedUser = await this.userService.create(body);

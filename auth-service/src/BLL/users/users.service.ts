@@ -58,6 +58,13 @@ export class UsersService {
     })();
   }
 
+  private buildFindManyOptions(options?: FindManyOptions<User>) {
+    const finalOptions: FindManyOptions<User> = options || {};
+    if (!finalOptions.order) finalOptions.order = {}
+    if (Object.keys(finalOptions.order).length === 0) finalOptions.order.id = 'DESC'
+    return finalOptions
+  }
+
   async create(data: DeepPartial<User>) {
     const newUser = this.usersRepository.create({
       username: data.username,
@@ -75,14 +82,12 @@ export class UsersService {
   }
 
   async find(options: FindManyOptions<User>) {
-    options.where = options.where || {};
-    const users = await this.usersRepository.find(options);
+    const users = await this.usersRepository.find(this.buildFindManyOptions(options));
     return users;
   }
 
   async findAndCount(options: FindManyOptions<User>) {
-    options.where = options.where || {};
-    const users = await this.usersRepository.findAndCount(options);
+    const users = await this.usersRepository.findAndCount(this.buildFindManyOptions(options));
     return { data: users[0], count: users[1] };
   }
 

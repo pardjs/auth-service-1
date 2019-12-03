@@ -1,5 +1,5 @@
 import { PostgresEntityParent } from '@pardjs/common';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
 @Entity('LoginSession')
 export class LoginSession extends PostgresEntityParent {

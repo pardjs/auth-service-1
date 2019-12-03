@@ -91,6 +91,15 @@ export class UsersController {
     return this.userApiService.changePassword(user, data);
   }
 
+  @Get('/me/auth-points')
+  @ApiOperation({title: 'findCurrentUserAuthPoints'})
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
+  findCurrentUserAuthPoints(@Req() req: any) {
+    const user = req.user as UserResponseDto;
+    return this.userApiService.findUserAuthPoints(user.id)
+  }
+
   @Get(':id')
   @ApiBearerAuth()
   @AuthPointName(AuthPoints.FIND_ONE_USER)

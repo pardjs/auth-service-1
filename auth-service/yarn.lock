@@ -411,20 +411,20 @@
     consola "^2.3.0"
     node-fetch "^2.3.0"
 
-"@pardjs/auth-service-common@0.1.1-rc4":
-  version "0.1.1-rc4"
-  resolved "https://registry.npmjs.org/@pardjs/auth-service-common/-/auth-service-common-0.1.1-rc4.tgz#9f3ceb6c077b7bca5edef908b1d85f30e3153178"
-  integrity sha512-joADcj5bxwukiCkmJjEi1T8jKYz1rugJ4uUyYD9KwOaElXU5tH+S41x7DLuSaXJY6s3DBiZg9rmPydY/HYqZiQ==
+"@pardjs/auth-service-common@0.1.1-rc5":
+  version "0.1.1-rc5"
+  resolved "https://registry.yarnpkg.com/@pardjs/auth-service-common/-/auth-service-common-0.1.1-rc5.tgz#32cf1c02419d3efff5e7ebaffb26508f7d9e936d"
+  integrity sha512-pjUMUd15WXL1L86H79M5xWIDVE7w34cN3ie95de82J5x/LsVhp0F34bHurFBEGMczIybj5j5H6/l9FTD4tVpxA==
   dependencies:
     "@nestjs/common" "^6.1.0"
     "@nestjs/swagger" "^3.1.0"
     class-validator "^0.11.0"
     rxjs "^6.5.3"
 
-"@pardjs/common@^1.1.4-rc3":
-  version "1.1.4-rc3"
-  resolved "https://registry.yarnpkg.com/@pardjs/common/-/common-1.1.4-rc3.tgz#9e9995c572a0e976feaf162e2d0ff1cacdadcd3f"
-  integrity sha512-2gJK8Sza37QXZKnfyXI3YYBhPEPYh5OkAh+mnS+VmGG8ENfdb0TCptwxNAOw215RVQoBbjoi5v2CLGYHtQ/xzg==
+"@pardjs/common@^1.1.4-rc4":
+  version "1.1.4-rc4"
+  resolved "https://registry.yarnpkg.com/@pardjs/common/-/common-1.1.4-rc4.tgz#013109563be199f598d8fbd4ba0a26811f422dc4"
+  integrity sha512-IRJ2AKSoEULWjJr44rrbez2Xj24Ja5wZSkLNUBQ3sjo+nss7Hsen2ecf70pD6bN0z95Ep7PfmqelYdqZ37QxBg==
   dependencies:
     "@nestjs/common" "^6.9.0"
     "@nestjs/core" "^6.9.0"

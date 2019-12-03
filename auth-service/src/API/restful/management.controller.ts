@@ -86,6 +86,7 @@ export class ManagementController {
     @Param('userId') userId: number,
     @Body() data: SetUserRolesDto,
   ) {
+    console.log(data)
     return this.managementService.setUserRoles(userId, data.roleIds);
   }
 
