@@ -68,6 +68,10 @@ export class LoginSessionsService {
     if (!session) {
       return;
     }
+    logger.level = 'debug'
+    logger.debug('session.updatedAt', session)
+    logger.debug('spanHours: ' + spanHours(session.updatedAt))
+    logger.debug('LOGIN_SESSION_LIFE_HOURS: ' + LOGIN_SESSION_LIFE_HOURS)
     if (spanHours(session.updatedAt) > LOGIN_SESSION_LIFE_HOURS) {
       throw new ForbiddenException(Errors.LOGIN_SESSION_TIMEOUT);
     }
@@ -100,7 +104,7 @@ export class LoginSessionsService {
 
   private async generateLoginResponse(user: User) {
     const userId = user.id;
-    const newSession = this.loginSessionRepository.create({ userId: user.id });
+    const newSession = this.loginSessionRepository.create({ userId: user.id, createdAt: new Date(), updatedAt: new Date() });
     const savedSession = await this.loginSessionRepository.save(newSession);
     const sessionId = savedSession.id;
     const token = this.genToken(sessionId);

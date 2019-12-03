@@ -421,10 +421,10 @@
     class-validator "^0.11.0"
     rxjs "^6.5.3"
 
-"@pardjs/common@^1.1.4-rc2":
-  version "1.1.4-rc2"
-  resolved "https://registry.npmjs.org/@pardjs/common/-/common-1.1.4-rc2.tgz#fe8a7fddc8e1ebed39759967f95f45a3fb2f9a26"
-  integrity sha512-N93Ze2jRHvi3EeErOeWvVZ7P2reo5XCHEIUTVsWoqwZoLy1lhntwDWvh9GDGPJy7vrLHiM/i1he4yq7Y5GCGVA==
+"@pardjs/common@^1.1.4-rc3":
+  version "1.1.4-rc3"
+  resolved "https://registry.yarnpkg.com/@pardjs/common/-/common-1.1.4-rc3.tgz#9e9995c572a0e976feaf162e2d0ff1cacdadcd3f"
+  integrity sha512-2gJK8Sza37QXZKnfyXI3YYBhPEPYh5OkAh+mnS+VmGG8ENfdb0TCptwxNAOw215RVQoBbjoi5v2CLGYHtQ/xzg==
   dependencies:
     "@nestjs/common" "^6.9.0"
     "@nestjs/core" "^6.9.0"

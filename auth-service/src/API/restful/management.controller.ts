@@ -35,7 +35,7 @@ export class ManagementController {
   @AuthPointName(AuthPoints.MGR_FIND_USERS)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   async findAllUsers() {
-    return this.userService.find({});
+    return this.userService.findAndCount({});
   }
 
   @Get('roles')
@@ -43,7 +43,7 @@ export class ManagementController {
   @AuthPointName(AuthPoints.MGR_FIND_ROLES)
   @UseGuards(AuthGuard('jwt'), DynamicRolesGuard)
   async findAllRoles() {
-    return this.roleService.find({});
+    return this.roleService.findAndCount({});
   }
 
   @Get('users/:id')

@@ -3,7 +3,7 @@ import { CanActivate, ExecutionContext, Injectable, OnModuleInit } from '@nestjs
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { fromAnywhere, logger } from '@pardjs/common';
 import { AuthPointNameKey } from '@pardjs/auth-service-common';
-import { GREEN_LIGHT_WITHOUT_USER_SERVICE, PARDJS_AUTH_SERVICE_BASE_URL } from './constants';
+import { GREEN_LIGHT_WITHOUT_USER_SERVICE, PARDJS_AUTH_SERVICE_GRPC_URL } from './constants';
 import { grpcClientOptions } from './grpc-client.options';
 
 const childLogger = logger.child({ service: 'dynamic-roles-guard' });
@@ -20,7 +20,7 @@ export class GrpcAirRolesGuard implements CanActivate, OnModuleInit {
   }
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
-    if (!PARDJS_AUTH_SERVICE_BASE_URL) {
+    if (!PARDJS_AUTH_SERVICE_GRPC_URL) {
       if (GREEN_LIGHT_WITHOUT_USER_SERVICE) {
         return true;
       } else {

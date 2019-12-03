@@ -1,4 +1,4 @@
-import { EntityParent } from '@pardjs/common';
+import { PostgresEntityParent } from '@pardjs/common';
 import {
   Column,
   Entity,
@@ -9,7 +9,7 @@ import {
 import { Role } from '../roles/role.entity';
 
 @Entity('AuthPoint')
-export class AuthPoint extends EntityParent {
+export class AuthPoint extends PostgresEntityParent {
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -14,7 +14,8 @@ export class RolesService {
   }
 
   public async findAndCount(options?: FindManyOptions<Role>) {
-    return this.repository.findAndCount(options);
+    const roles = await this.repository.findAndCount(options);
+    return {data: roles[0], count: roles[1]}
   }
 
   public async findById(id: number) {

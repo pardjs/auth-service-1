@@ -34,6 +34,8 @@ export class UsersService {
           password: SUPER_ADMIN_INITIAL_PASSWORD,
           name: '超级管理员',
           shownInApp: false,
+          createdAt: new Date(),
+          updatedAt: new Date()
         });
       }
 
@@ -61,6 +63,8 @@ export class UsersService {
       username: data.username,
       password: superMd5(data.password, PASSWORD_HASH_KEY),
       name: data.name,
+      createdAt: new Date(),
+      updatedAt: new Date()
     });
     const savedUser = await this.usersRepository.save(newUser);
     return savedUser;
@@ -76,8 +80,15 @@ export class UsersService {
     return users;
   }
 
+  async findAndCount(options: FindManyOptions<User>) {
+    options.where = options.where || {};
+    const users = await this.usersRepository.findAndCount(options);
+    return { data: users[0], count: users[1] };
+  }
+
   async changePassword(user: User, newPassword: string) {
     user.password = superMd5(newPassword, PASSWORD_HASH_KEY);
+    user.updatedAt = new Date()
     return this.save(user);
   }
 

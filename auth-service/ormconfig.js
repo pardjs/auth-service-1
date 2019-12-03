@@ -1,4 +1,5 @@
 require('dotenv').config();
+console.log(new Date())
 
 module.exports = {
     entities: [process.env.NODE_ENV === 'production' ? 'dist/**/*.entity.js' : 'src/**/*.entity.ts'],
@@ -11,5 +12,5 @@ module.exports = {
         migrationsDir: "db-migration"
     },
     logging: true,
-    logger: 'debug'
+    logger: 'console'
 }

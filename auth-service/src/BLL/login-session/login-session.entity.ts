@@ -1,8 +1,8 @@
-import { EntityParent } from '@pardjs/common';
+import { PostgresEntityParent } from '@pardjs/common';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('LoginSession')
-export class LoginSession extends EntityParent {
+export class LoginSession extends PostgresEntityParent {
   @PrimaryGeneratedColumn()
   id: number;
 
