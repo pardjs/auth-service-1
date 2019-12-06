@@ -1,3 +1,4 @@
 logs
 .history
 node_modules
+dist
