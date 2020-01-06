@@ -33,6 +33,9 @@ export class UsersApiService {
   async findUserAuthPoints(id: number) {
     const user = await this.userService.findById(id)
     const roleIds = user.roles.map(role => role.id)
+    if (roleIds.length === 0) {
+      return []
+    }
     const roles = await this.roleService.find({
       where: {id: In(roleIds)},
       join: {

@@ -1,12 +1,13 @@
 {
   "name": "@pardjs/auth-service-sdk",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.4",
+  "description": "The Pardjs Auth Service SDK for common use.",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "lint": "tslint -c tslint.json 'src/*.ts' --fix",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "yarn run build"
   },
   "author": "",
   "license": "ISC",

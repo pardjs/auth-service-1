@@ -15,6 +15,20 @@ export interface IAuthPoint {
     displayName: string;
 }
 
+export interface IRole {
+    id: number
+    name: string
+}
+
+export interface IUserResponse {
+    username: string;
+    id: number;
+    name: string;
+    roles: IRole[];
+    createdAt: string;
+    updatedAt: string;
+}
+
 export class AuthClient {
     private baseUrl = "";
     private httpClient: AxiosInstance;
@@ -50,7 +64,7 @@ export class AuthClient {
         if (authPointName) {
             url += '?authPointName=11'
         }
-        return this.httpClient.get(url, { headers: { authorization: userToken } })
+        return this.httpClient.get<IUserResponse>(url, { headers: { authorization: userToken } })
     }
 
 }
