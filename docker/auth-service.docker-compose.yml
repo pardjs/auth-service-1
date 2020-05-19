@@ -6,11 +6,7 @@ services:
     image: registry.cn-shanghai.aliyuncs.com/pardjs/auth-service:1.2.2
     restart: always
     environment: 
-      DB_URL: postgres://pardjs:example@db:5432/pardjs-auth-service
-    links: 
-      - pardjs-auth-service-db:db
-    ports:
-      - 5000:5000
+      DB_URL: postgres://pardjs:example@pardjs-auth-service-db:5432/pardjs-auth-service
     networks: 
       - pardjs-auth-service
 networks: 

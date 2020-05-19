@@ -20,7 +20,7 @@ import {
   ApiResponse,
   ApiUseTags,
 } from '@nestjs/swagger';
-import { AuthPointName, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponseDto, CreateAuthPointDto} from '@pardjs/auth-service-common';
+import { AuthPointName, CreateAuthPointDto, CreateUserDto, SetUserRolesDto, UpdateUserDto, UserResponseDto } from '@pardjs/auth-service-common';
 import { AuthPoints, AuthPointsService, DynamicRolesGuard, User, UsersService } from '../../BLL';
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';
 import { Errors } from '../../errors';
@@ -34,7 +34,7 @@ export class UsersController {
     private readonly usersService: UsersService,
     private readonly userApiService: UsersApiService,
     private readonly authPointsService: AuthPointsService,
-  ) {}
+  ) { }
 
   @Post('')
   @ApiOperation({ operationId: 'create', title: 'create' })
@@ -82,7 +82,7 @@ export class UsersController {
     return this.userApiService.toResponse(req.user as User);
   }
 
-  @Get('/me/change-password')
+  @Post('/me/change-password')
   @ApiOperation({ title: 'currentUser' })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
@@ -92,10 +92,10 @@ export class UsersController {
   }
 
   @Get('/me/auth-points')
-  @ApiOperation({title: 'findCurrentUserAuthPoints'})
+  @ApiOperation({ title: 'findCurrentUserAuthPoints' })
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
-  @ApiResponse({status: HttpStatus.OK, type: CreateAuthPointDto, isArray: true})
+  @ApiResponse({ status: HttpStatus.OK, type: CreateAuthPointDto, isArray: true })
   findCurrentUserAuthPoints(@Req() req: any) {
     const user = req.user as UserResponseDto;
     return this.userApiService.findUserAuthPoints(user.id)
