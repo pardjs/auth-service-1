@@ -38,7 +38,7 @@
     "@pardjs/auth-service-common": "0.1.1-rc5",
     "@pardjs/common": "^1.1.4-rc4",
     "@sentry/node": "^5.7.1",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "grpc": "^1.24.2",
