@@ -41,7 +41,7 @@
     "class-transformer": "^0.2.3",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
-    "grpc": "^1.24.2",
+    "grpc": "^1.24.9",
     "lodash": "^4.17.15",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
