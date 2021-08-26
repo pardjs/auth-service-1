@@ -1,7 +1,7 @@
 import { GrpcAuthService } from '@pardjs/auth-service-common';
 import { CanActivate, ExecutionContext, Injectable, OnModuleInit } from '@nestjs/common';
 import { Client, ClientGrpc } from '@nestjs/microservices';
-import { fromAnywhere, logger } from '@pardjs/common';
+import { fromAnywhere, logger } from '@pardjs/common-1';
 import { AuthPointNameKey } from '@pardjs/auth-service-common';
 import { GREEN_LIGHT_WITHOUT_USER_SERVICE, PARDJS_AUTH_SERVICE_GRPC_URL } from './constants';
 import { grpcClientOptions } from './grpc-client.options';

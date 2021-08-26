@@ -1,4 +1,4 @@
-import { checkEnv, SECONDS_ONE_HOUR } from '@pardjs/common';
+import { checkEnv, SECONDS_ONE_HOUR } from '@pardjs/common-1';
 
 checkEnv(
   'SUPER_ADMIN_INITIAL_PASSWORD',

@@ -1,9 +1,9 @@
-FROM registry.cn-shanghai.aliyuncs.com/pardjs/base:10-alpine
+FROM keymetrics/pm2:16-buster
 COPY ./package.json /usr/share/pardjs-service
-COPY ./yarn.lock /usr/share/pardjs-service
-RUN yarn
+COPY ./package-lock.json /usr/share/pardjs-service
+RUN npm install
 COPY . /usr/share/pardjs-service
-RUN yarn run build
+RUN npm run build
 RUN rm -rf ./src
 RUN ls -al
-CMD yarn run start:prod
+CMD npm run start:prod

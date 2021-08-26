@@ -1,7 +1,7 @@
 import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RegisterAuthPointsDto } from '@pardjs/auth-service-common';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import * as _ from 'lodash';
 import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
 import { BllError } from '../bll-error';

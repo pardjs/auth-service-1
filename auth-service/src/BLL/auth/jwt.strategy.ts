@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { JwtPayload } from '@pardjs/auth-service-common';
-import { fromAnywhere, logger } from '@pardjs/common';
+import { fromAnywhere, logger } from '@pardjs/common-1';
 import { Strategy } from 'passport-jwt';
 import { JWT_SECRET } from '../../constants';
 import { AuthService } from './auth.service';

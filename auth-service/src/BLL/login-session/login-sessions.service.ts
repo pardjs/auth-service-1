@@ -6,8 +6,7 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtPayload, LoginByUsernameDto, LoginResponseDto } from '@pardjs/auth-service-common';
-import { logger, superMd5 } from '@pardjs/common';
-import { spanHours } from '@pardjs/common';
+import { logger, superMd5, spanHours } from '@pardjs/common-1';
 import { Repository } from 'typeorm';
 import {
   IP_WHITE_LIST_USER_ID,

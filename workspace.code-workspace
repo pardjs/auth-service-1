@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "auth-service"
+		},
+		{
+			"path": "pkg-sdk"
+		},
+		{
+			"path": "pkg-nest-sdk"
+		},
+		{
+			"path": "pkg-common"
+		},
+		{
+			"path": "examples"
+		},
+		{
+			"path": "docker"
+		}
+	],
+	"settings": {}
+}

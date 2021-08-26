@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { WebServicesModule } from './web-services.module';

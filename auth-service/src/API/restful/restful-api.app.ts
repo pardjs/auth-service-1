@@ -6,7 +6,7 @@ import {
   HttpExceptionFilter,
   logger,
   ValidationPipe,
-} from '@pardjs/common';
+} from '@pardjs/common-1';
 import * as cookieParser from 'cookie-parser';
 import { API_PREFIX, PORT, SERVICE_BASE } from '../../constants';
 import { AppModule } from './restful-api.app.module';

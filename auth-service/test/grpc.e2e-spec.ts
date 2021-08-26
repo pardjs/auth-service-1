@@ -6,7 +6,7 @@ config({
 
 import { UserResponseDto } from '@pardjs/auth-service-common'
 import * as protoLoader from '@grpc/proto-loader';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import * as grpc from 'grpc';
 
 const PROTO_PATH = __dirname + '/../node_modules/@pardjs/auth-service-common/auth-service.proto';

@@ -1,4 +1,4 @@
-import { PostgresEntityParent } from '@pardjs/common';
+import { PostgresEntityParent } from '@pardjs/common-1';
 import {
   Column,
   Entity,

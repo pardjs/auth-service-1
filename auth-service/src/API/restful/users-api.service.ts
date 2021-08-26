@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto, RoleResponseDto, SetUserRolesDto, UserResponseDto } from '@pardjs/auth-service-common';
-import { superMd5 } from '@pardjs/common';
+import { superMd5 } from '@pardjs/common-1';
 import { In } from 'typeorm';
 import { Role, RolesService, User, UsersService } from '../../BLL';
 import { PASSWORD_HASH_KEY } from '../../constants';

@@ -17,7 +17,7 @@ import {
   ApiUseTags,
 } from '@nestjs/swagger';
 import { LoginByUsernameDto, LoginResponseDto } from '@pardjs/auth-service-common';
-import { logger, MS_ONE_SECOND } from '@pardjs/common';
+import { logger, MS_ONE_SECOND } from '@pardjs/common-1';
 import { Request, Response } from 'express';
 import { LoginSessionsService, User } from '../../BLL';
 import { IP_WHITE_LIST } from '../../constants';

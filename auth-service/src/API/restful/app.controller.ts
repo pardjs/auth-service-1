@@ -1,5 +1,5 @@
 import { Controller, Get, OnModuleInit } from '@nestjs/common';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { AppService } from './app.service';

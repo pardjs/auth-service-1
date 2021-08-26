@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import { AuthPointsModule, LoginSessionsModule } from '../../BLL';
 import { AuthServiceController } from './auth-service.controller';
 import { GrpcApiService } from './grpc-api.service';

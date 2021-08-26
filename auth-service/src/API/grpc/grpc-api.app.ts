@@ -1,6 +1,6 @@
 import { Transport } from '@nestjs/common/enums/transport.enum';
 import { NestFactory } from '@nestjs/core';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import { join } from 'path';
 import { GRPC_PORT } from '../../constants';
 import { AppModule } from './grpc-api.app.module';

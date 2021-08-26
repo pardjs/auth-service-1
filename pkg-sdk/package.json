@@ -7,7 +7,7 @@
     "build": "tsc",
     "lint": "tslint -c tslint.json 'src/*.ts' --fix",
     "test": "jest",
-    "prepublish": "yarn run build"
+    "prepublish": "npm run build"
   },
   "author": "",
   "license": "ISC",

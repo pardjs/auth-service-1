@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { AuthPointNameKey } from '@pardjs/auth-service-common';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import { AuthPointsService } from '../auth-points/auth-points.service';
 
 import { ADMIN_USER_ID, IP_WHITE_LIST_USER_ID } from '../../constants';

@@ -1,6 +1,6 @@
 import { BadRequestException,
   HttpStatus, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
-import { logger } from '@pardjs/common';
+import { logger } from '@pardjs/common-1';
 import { LoginResponseDto, RegisterAuthPointsDto, UserResponseDto } from '@pardjs/auth-service-common';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { PARDJS_AUTH_SERVICE_BASE_URL } from './constants';
