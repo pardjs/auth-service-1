@@ -70,7 +70,7 @@
     "tsconfig-paths": "3.8.0",
     "tslint": "^6.0.0-beta0",
     "typescript": "3.4.2",
-    "yarn": "^1.19.1"
+    "yarn": "^1.22.0"
   },
   "jest": {
     "moduleFileExtensions": [
